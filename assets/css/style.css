@@ -58,6 +58,10 @@
   color: #0077b5;
 }
 
+.dribble {
+  color: #db028f;
+}
+
 .angellist {
   color: grey;
 }
@@ -69,6 +73,9 @@
 
 .linkedin:hover {
   background-color: #0077b5;
+}
+.dribble:hover {
+  background-color: #db028f;
 }
 
 .angellist:hover {

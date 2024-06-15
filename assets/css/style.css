@@ -62,10 +62,6 @@
   color: #db028f;
 }
 
-.angellist {
-  color: grey;
-}
-
 .icon-btn:hover {
   transform: scale(1.10);
   color: #FFFFFF;
@@ -77,10 +73,6 @@
 
 .dribble:hover {
   background-color: #db028f;
-}
-
-.angellist:hover {
-  background-color: grey;
 }
 
 .github:hover {

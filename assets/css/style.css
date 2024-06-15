@@ -64,7 +64,17 @@
 }
 
 .instagram {
-  color: purple;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background-color: #ffffff;
+  /* Background putih */
+  color: #000000;
+  /* Ikon hitam */
+  text-align: center;
+  line-height: 50px;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .icon-btn:hover {
@@ -81,10 +91,10 @@
 }
 
 .instagram:hover {
-  background-color: #ffffff;
-  /* Background putih */
-  color: #E4405F;
-  /* Ikon warna Instagram */
+  background-color: #E4405F;
+  /* Background warna Instagram */
+  color: #ffffff;
+  /* Ikon putih */
 }
 
 .github:hover {

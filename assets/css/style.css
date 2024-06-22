@@ -63,13 +63,6 @@
   color: #db028f;
 }
 
-.instagram {
-  background-color: #ffffff;
-  /* Background putih */
-  color: #E4405F;
-  /* Ikon hitam */
-}
-
 .icon-btn:hover {
   transform: scale(1.10);
   color: #FFFFFF;
@@ -81,11 +74,6 @@
 
 .dribble:hover {
   background-color: #db028f;
-}
-
-.instagram:hover {
-  background-color: #E4405F;
-  /* Background warna Instagram */
 }
 
 .github:hover {

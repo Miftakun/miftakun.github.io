@@ -63,6 +63,14 @@
   color: #db028f;
 }
 
+.behance {
+  color: #005CFF;
+}
+
+.upwork {
+  color: black;
+}
+
 .icon-btn:hover {
   transform: scale(1.10);
   color: #FFFFFF;
@@ -77,6 +85,14 @@
 }
 
 .github:hover {
+  background-color: black;
+}
+
+.behance:hover {
+  background-color: #005CFF;
+}
+
+.upwork:hover {
   background-color: black;
 }
 

@@ -64,7 +64,7 @@
 }
 
 .behance {
-  color: linear-gradient(to right, #005CFF, #0047AD);
+  color:#0047AD;
 }
 
 .icon-btn:hover {
@@ -85,7 +85,7 @@
 }
 
 .behance:hover {
-  background-color: black;
+  background-color: linear-gradient(to right, #005CFF, #0047AD);
 }
 
 

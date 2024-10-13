@@ -59,13 +59,14 @@
   color: #0077b5;
 }
 
+.behance {
+  color: #005CFF;
+}
+
 .dribble {
   color: #db028f;
 }
 
-.behance {
-  color: black;
-}
 
 .icon-btn:hover {
   transform: scale(1.10);
@@ -85,7 +86,7 @@
 }
 
 .behance:hover {
-  background-color: black;
+  background-color: #005CFF;
 }
 
 

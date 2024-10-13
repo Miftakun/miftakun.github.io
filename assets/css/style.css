@@ -64,11 +64,7 @@
 }
 
 .behance {
-  color: #005CFF;
-}
-
-.upwork {
-  color: black;
+  background: linear-gradient(to right, #005CFF, #0047AD);
 }
 
 .icon-btn:hover {
@@ -89,12 +85,9 @@
 }
 
 .behance:hover {
-  background-color: #005CFF;
+  background: linear-gradient(to right, #005CFF, #0047AD);
 }
 
-.upwork:hover {
-  background-color: black;
-}
 
 /* Buttons - Read Me, Contact Us */
 

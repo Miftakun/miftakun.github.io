@@ -1,0 +1,316 @@
+/* Modern Minimalist Aesthetic - Refined V2 */
+
+/* --- 1. Typography & Global Reset --- */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --bg-color: #ffffff;
+    --bg-secondary: #f9f9f9;
+    --text-primary: #121212;
+    --text-secondary: #555555;
+    --accent-color: #000000;
+    --border-color: #eeeeee;
+    --sidebar-width: 280px;
+    --sidebar-collapsed-width: 80px;
+}
+
+body {
+    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Space Grotesk', sans-serif !important;
+    font-weight: 700 !important;
+    color: var(--text-primary);
+    letter-spacing: -0.03em;
+    margin-top: 0;
+}
+
+/* Global Color Override - Kill the Green */
+.teal,
+.teal-text,
+.green,
+.green-text,
+.light-blue,
+.blue-grey,
+.blue-grey-text {
+    background-color: var(--accent-color) !important;
+    color: #fff !important;
+}
+
+.teal-text,
+.green-text,
+.blue-grey-text {
+    background-color: transparent !important;
+    color: var(--text-primary) !important;
+}
+
+/* Waves Effect Override */
+.waves-effect.waves-teal .waves-ripple {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* --- 2. Enhanced Sidebar (UX Improvement) --- */
+ul.side-nav.fixed {
+    width: var(--sidebar-width) !important;
+    background: #fff !important;
+    border-right: 1px solid var(--border-color);
+    box-shadow: none !important;
+    padding-top: 50px !important;
+    /* Increased from 40px to lower profile pic */
+    z-index: 999;
+}
+
+ul.side-nav.fixed .logo {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 0 20px !important;
+    background: transparent !important;
+    border: none !important;
+    height: auto !important;
+}
+
+.profile-pic {
+    border: none !important;
+    width: 120px !important;
+    /* Slightly larger */
+    height: 120px !important;
+    border-radius: 50% !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px !important;
+    filter: grayscale(100%) !important;
+    /* Enforce B&W */
+    transition: transform 0.3s ease;
+    margin-top: 0 !important;
+    /* Reset any negative margins */
+}
+
+.profile-pic:hover {
+    transform: scale(1.05) rotate(2deg);
+}
+
+/* Navigation Links */
+ul.side-nav.fixed li a i {
+    font-size: 20px;
+    margin-right: 15px !important;
+    line-height: inherit;
+    color: inherit !important;
+    width: 24px;
+    text-align: center;
+}
+
+/* Hover & Active States */
+ul.side-nav.fixed li a:hover,
+ul.side-nav.fixed li.active a {
+    background-color: #f5f5f5 !important;
+    color: var(--text-primary) !important;
+    font-weight: 600;
+    border-left: none !important;
+    /* Remove legacy border */
+    border: none !important;
+    /* Ensure clean rounded look */
+    box-sizing: border-box !important;
+    /* Fix sizing issues */
+}
+
+ul.side-nav.fixed li a {
+    /* ... existing props ... */
+    display: flex;
+    align-items: center;
+    height: 50px;
+    line-height: normal;
+    /* Fix alignment */
+    padding: 0 20px !important;
+    border-radius: 12px;
+    color: var(--text-secondary) !important;
+    font-weight: 500;
+    font-size: 15px;
+    transition: all 0.2s ease;
+    border: none !important;
+    /* Ensure no border by default */
+    box-sizing: border-box !important;
+    margin: 0 !important;
+}
+
+ul.side-nav.fixed li {
+    float: none;
+    padding: 0 16px !important;
+    /* Adjust container padding for the rounded items */
+    margin-bottom: 4px;
+}
+
+/* --- 3. Main Content Layout --- */
+main,
+footer {
+    padding-left: var(--sidebar-width) !important;
+    transition: padding-left 0.3s ease;
+}
+
+.container {
+    width: 92% !important;
+    max-width: 1200px !important;
+}
+
+/* --- 4. Hero Section Refined --- */
+#intro.section {
+    min-height: 100vh;
+    display: block !important;
+    /* Changed from flex to block to allow padding to work simpler */
+    padding-top: 180px !important;
+    /* Push content down significantly */
+    background: linear-gradient(135deg, #ffffff 0%, #f0f2f5 100%) !important;
+}
+
+#intro .intro-content {
+    /* padding: 0 !important; */
+    padding-left: 50px !important;
+    /* Left alignment */
+    margin-top: 20px;
+}
+
+/* Typing text */
+.typing {
+    background: linear-gradient(90deg, #111, #555);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800 !important;
+    font-size: inherit;
+}
+
+/* --- 5. Button & Icon Precision --- */
+.btn {
+    height: 48px !important;
+    line-height: 48px !important;
+    padding: 0 28px !important;
+    border-radius: 8px !important;
+    /* Slightly rounded, not pill */
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    text-transform: capitalize !important;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+    background-color: var(--accent-color) !important;
+}
+
+.btn:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15) !important;
+    transform: translateY(-2px);
+    background-color: #222 !important;
+}
+
+/* Social Icons */
+.icon-btn {
+    width: 48px !important;
+    height: 48px !important;
+    line-height: 46px !important;
+    /* Precision centering */
+    font-size: 20px !important;
+    border-radius: 50% !important;
+    color: var(--text-primary) !important;
+    background: #fff !important;
+    border: 1px solid #e0e0e0 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+    display: inline-flex !important;
+    justify-content: center;
+    align-items: center;
+    margin: 0 8px 10px 0 !important;
+    transition: all 0.3s ease;
+}
+
+.icon-btn i {
+    line-height: 1 !important;
+}
+
+.icon-btn:hover {
+    border-color: var(--accent-color) !important;
+    background: var(--accent-color) !important;
+    color: #fff !important;
+    transform: translateY(-3px);
+}
+
+/* --- 6. Card Perfection --- */
+.card {
+    background: #fff;
+    border-radius: 16px !important;
+    border: 1px solid rgba(0, 0, 0, 0.04) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04) !important;
+    overflow: hidden;
+}
+
+.card .card-image {
+    max-height: 280px !important;
+    /* Consistent height */
+    overflow: hidden;
+}
+
+.card .card-image img {
+    border-radius: 16px 16px 0 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+    /* Ensure no stretching */
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.card:hover .card-image img {
+    transform: scale(1.05);
+    /* Zoom effect */
+}
+
+.card .card-content {
+    padding: 24px !important;
+}
+
+.card .card-title {
+    font-family: 'Space Grotesk', sans-serif !important;
+    font-size: 1.25rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 8px !important;
+    line-height: 1.3 !important;
+}
+
+/* Section Headings */
+.section h3.page-title {
+    font-weight: 800 !important;
+    font-size: 2.5rem !important;
+    margin-bottom: 60px !important;
+    text-align: left;
+    position: relative;
+    padding-left: 20px !important;
+    border-left: 6px solid var(--accent-color);
+}
+
+.section h3.page-title::after {
+    display: none;
+}
+
+/* Responsive */
+@media only screen and (max-width: 992px) {
+
+    main,
+    footer {
+        padding-left: 0 !important;
+    }
+
+    ul.side-nav.fixed {
+        transform: translateX(-105%);
+    }
+
+    .container {
+        width: 90% !important;
+    }
+
+    h2 {
+        font-size: 2.5rem !important;
+    }
+}

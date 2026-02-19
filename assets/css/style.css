@@ -45,10 +45,12 @@
   color: #FFFFFF;
   cursor: pointer;
   font-size: 30px;
-  line-height: 70px;
+  line-height: 50px;
   border-radius: 45px;
   display: inline-block;
   margin: 4px;
+  background-color: #fff;
+  text-align: center;
 }
 
 .github {
@@ -255,7 +257,8 @@ ul.side-nav.fixed a {
   padding: 10px 0 12px;
 }
 
-ul.table-of-contents li.logo a.active, ul.table-of-contents li.logo a:hover {
+ul.table-of-contents li.logo a.active,
+ul.table-of-contents li.logo a:hover {
   border: none;
   font-weight: 200;
 }
@@ -281,12 +284,14 @@ ul.side-nav.fixed li.logo a {
   line-height: 100%;
 }
 
-ul.table-of-contents li:not(.logo) a.active, ul.table-of-contents li:not(.logo) a:hover {
+ul.table-of-contents li:not(.logo) a.active,
+ul.table-of-contents li:not(.logo) a:hover {
   background-color: #fafafa;
   border-left: 3px solid;
 }
 
-ul.side-nav.fixed.table-of-contents li:not(.logo) a span, ul#slide-out li:not(.logo) a span {
+ul.side-nav.fixed.table-of-contents li:not(.logo) a span,
+ul#slide-out li:not(.logo) a span {
   color: #333 !important;
 }
 
@@ -342,6 +347,7 @@ h3 {
   left: 0;
   position: absolute;
   top: 0;
+  padding-left: 120px;
 }
 
 /* #intro.section .container *:not(span) {
@@ -616,7 +622,8 @@ small {
     position: absolute;
   }
 
-  nav a.button-collapse, nav a.button-collapse i {
+  nav a.button-collapse,
+  nav a.button-collapse i {
     color: #009688;
     height: 56px;
     line-height: 56px;
@@ -647,7 +654,8 @@ small {
     position: absolute;
   }
 
-  .name-title>span, .name-title>a {
+  .name-title>span,
+  .name-title>a {
     position: relative;
     line-height: 20px;
   }
@@ -662,7 +670,8 @@ small {
     font-size: 14px;
   }
 
-  h3, .container {
+  h3,
+  .container {
     position: relative;
     top: 64px;
   }
@@ -724,4 +733,20 @@ small {
   #intro.section {
     background-position-x: 30%;
   }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.typing {
+  font-weight: 700;
+  color: #004d40 !important;
 }

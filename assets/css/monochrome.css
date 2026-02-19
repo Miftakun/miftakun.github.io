@@ -165,7 +165,7 @@ footer {
     min-height: 100vh;
     display: block !important;
     /* Changed from flex to block to allow padding to work simpler */
-    padding-top: 180px !important;
+    padding-top: 250px !important;
     /* Push content down significantly */
     background: linear-gradient(135deg, #ffffff 0%, #f0f2f5 100%) !important;
 }

@@ -652,17 +652,17 @@ footer {
 .code-snippet-container {
     position: absolute;
     right: 5%;
-    top: 120%;
+    top: 116%;
     transform: translateY(-50%);
     width: 400px;
-    background: #1e1e1e;
-    /* Dark theme editor */
+    background: #111;
+    /* Darker Monochrome background */
     border-radius: 12px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
     padding: 20px;
     font-family: 'Consolas', 'Monaco', monospace;
     z-index: 0;
-    opacity: 0.9;
+    opacity: 0.95;
     border: 1px solid #333;
     display: none;
     /* Hidden by default on mobile */
@@ -688,46 +688,52 @@ footer {
 }
 
 .dot-red {
-    background-color: #ff5f56;
+    background-color: #333;
+    /* Dark Grey */
 }
 
 .dot-yellow {
-    background-color: #ffbd2e;
+    background-color: #777;
+    /* Medium Grey */
 }
 
 .dot-green {
-    background-color: #27c93f;
+    background-color: #bbb;
+    /* Light Grey */
 }
 
 .code-content {
-    color: #d4d4d4;
+    color: #e0e0e0;
     font-size: 14px;
     line-height: 1.6;
 }
 
 .keyword {
-    color: #569cd6;
+    color: #fff;
+    font-weight: bold;
 }
 
-/* Blue */
+/* White Bold */
 .string {
-    color: #ce9178;
+    color: #aaa;
+    font-style: italic;
 }
 
-/* Orange */
+/* Light Grey Italic */
 .function {
-    color: #dcdcaa;
+    color: #ccc;
 }
 
-/* Yellow */
+/* Light Grey */
 .comment {
-    color: #6a9955;
+    color: #666;
+    font-style: italic;
 }
 
-/* Green */
+/* Dark Grey Italic */
 .bracket {
-    color: #ffd700;
+    color: #fff;
 }
 
 
-/* Gold */
+/* White */

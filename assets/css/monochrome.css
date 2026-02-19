@@ -479,7 +479,8 @@ footer {
         z-index: 10005 !important;
         /* Super High Z-Index to stay on top */
         top: 0 !important;
-        padding-top: 60px !important;
+        padding-top: 0px !important;
+        /* Move content way up */
         height: 100% !important;
         position: fixed !important;
 
@@ -495,8 +496,11 @@ footer {
     /* ul#slide-out:not(.active) rule deleted */
 
     ul#slide-out .logo {
-        margin-top: 10px !important;
-        margin-bottom: 20px !important;
+        margin-top: 15px !important;
+        /* Small top margin */
+        padding-top: 0 !important;
+        margin-bottom: 10px !important;
+        /* Reduce space below logo */
         height: auto !important;
         display: block !important;
     }

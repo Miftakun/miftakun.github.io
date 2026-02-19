@@ -304,13 +304,132 @@ footer {
 
     ul.side-nav.fixed {
         transform: translateX(-105%);
+        width: 280px !important;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1) !important;
+        z-index: 1005 !important;
+        /* Ensure on top */
     }
 
+    /* Hamburger Menu Restyling - Fix Layering */
+    .button-collapse {
+        display: block !important;
+        position: fixed;
+        left: 20px;
+        top: 20px;
+        z-index: 1010 !important;
+        /* Higher than sidebar and header */
+        background: rgba(255, 255, 255, 0.95);
+        padding: 8px 12px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        /* Slight shadow to lift it up */
+        border: 1px solid #e0e0e0;
+        color: #000 !important;
+    }
+
+    .button-collapse i {
+        color: #000 !important;
+        font-size: 24px;
+        line-height: 1;
+    }
+
+    /* Fix Width Issue - Reduce Gaps */
     .container {
-        width: 90% !important;
+        width: 100% !important;
+        /* Full width */
+        max-width: 100% !important;
+        padding: 0 24px !important;
+        /* Precise edge padding (std 24px mobile) */
+        margin: 0 !important;
+    }
+
+    /* Reset row margins that might cause overflow */
+    .row {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .col {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
     }
 
     h2 {
+        font-size: 2.2rem !important;
+    }
+}
+
+/* Specific Mobile Portrait Fixes */
+@media only screen and (max-width: 600px) {
+    #intro.section {
+        padding-top: 100px !important;
+        text-align: left !important;
+        /* Force Left Alignment */
+    }
+
+    #intro .intro-content {
+        padding-left: 0 !important;
+        margin-top: 0;
+        display: block !important;
+        /* Remove Flex/Center */
+    }
+
+    .profile-pic {
+        width: 100px !important;
+        height: 100px !important;
+        margin: 0 0 20px 0 !important;
+        /* Left align: 0 margin left/right */
+        display: block;
+        float: none;
+    }
+
+    h1 {
         font-size: 2.5rem !important;
+        line-height: 1.1;
+        margin-bottom: 12px;
+    }
+
+    .social {
+        justify-content: flex-start !important;
+        /* Left Align Social Icons */
+        margin-top: 20px;
+        margin-left: -5px;
+        /* Alignment correction */
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .icon-btn {
+        width: 40px !important;
+        height: 40px !important;
+        line-height: 38px !important;
+        font-size: 18px !important;
+        margin: 0 8px 8px 0 !important;
+        /* Spacing */
+    }
+
+    /* Buttons stacking - Left Aligned */
+    .btn,
+    .contactme,
+    .readme {
+        width: auto !important;
+        /* Fit content, not full width */
+        min-width: 140px;
+        margin-bottom: 12px;
+        margin-right: 10px;
+        display: inline-block;
+        text-align: center;
+    }
+
+    /* Fix card padding */
+    .card .card-content {
+        padding: 20px !important;
+    }
+
+    .section h3.page-title {
+        font-size: 1.8rem !important;
+        padding-left: 15px !important;
+        border-width: 4px;
+        margin-bottom: 30px !important;
     }
 }

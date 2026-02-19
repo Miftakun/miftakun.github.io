@@ -14,13 +14,14 @@
     --sidebar-collapsed-width: 80px;
 }
 
+
 body {
     font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
     background-color: var(--bg-color);
     color: var(--text-primary);
     line-height: 1.7;
     overflow-x: hidden;
-    margin: 10;
+    margin-top: 0px;
 }
 
 h1,
@@ -73,6 +74,7 @@ ul.side-nav.fixed {
 
 ul.side-nav.fixed .logo {
     text-align: center;
+    margin-top: 100px !important;
     margin-bottom: 40px;
     padding: 0 20px !important;
     background: transparent !important;
@@ -100,36 +102,20 @@ ul.side-nav.fixed .logo {
 }
 
 /* Navigation Links */
-ul.side-nav.fixed li a i {
-    font-size: 20px;
-    margin-right: 15px !important;
-    line-height: inherit;
-    color: inherit !important;
-    width: 24px;
-    text-align: center;
-}
-
-/* Hover & Active States */
-ul.side-nav.fixed li a:hover,
-ul.side-nav.fixed li.active a {
-    background-color: #f5f5f5 !important;
-    color: var(--text-primary) !important;
-    font-weight: 600;
-    border-left: none !important;
-    /* Remove legacy border */
-    border: none !important;
-    /* Ensure clean rounded look */
-    box-sizing: border-box !important;
-    /* Fix sizing issues */
-}
-
-ul.side-nav.fixed li a {
-    /* ... existing props ... */
-    display: flex;
-    align-items: center;
-    height: 50px;
-    line-height: normal;
-    /* Fix alignment */
+/* Navigation Links - Unified for Desktop & Mobile */
+/* Navigation Links - Unified for Desktop & Mobile */
+/* Navigation Links - Unified for Desktop & Mobile */
+ul.side-nav li a {
+    position: relative;
+    /* For indicator line */
+    display: flex !important;
+    /* Force Flex */
+    align-items: center !important;
+    /* Force Vertical Center */
+    justify-content: flex-start !important;
+    height: 50px !important;
+    line-height: normal !important;
+    /* Reset line-height */
     padding: 0 20px !important;
     border-radius: 12px;
     color: var(--text-secondary) !important;
@@ -137,15 +123,96 @@ ul.side-nav.fixed li a {
     font-size: 15px;
     transition: all 0.2s ease;
     border: none !important;
-    /* Ensure no border by default */
     box-sizing: border-box !important;
     margin: 0 !important;
+    overflow: hidden;
+    /* Clip indicator to rounded corners */
 }
 
-ul.side-nav.fixed li {
+ul.side-nav li a i {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 20px !important;
+    margin: 0 15px 0 0 !important;
+    /* Only right margin */
+    color: inherit !important;
+    width: 24px;
+    text-align: center;
+    transition: color 0.2s ease;
+    position: relative;
+    z-index: 2;
+    height: auto !important;
+}
+
+ul.side-nav li a span {
+    display: inline-block !important;
+    vertical-align: middle !important;
+    line-height: 1.2 !important;
+    /* Prevent text floating high */
+    margin: 0 !important;
+    padding-top: 2px;
+    /* Slight optical adjustment for specific font */
+    position: relative;
+    z-index: 2;
+}
+
+/* Indicator Line (Pseudo-element) */
+ul.side-nav li a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0;
+    /* Hidden by default */
+    background-color: transparent;
+    transition: all 0.2s ease;
+    z-index: 1;
+}
+
+/* Hover & Active States */
+ul.side-nav li a:hover {
+    background-color: #f0f0f0 !important;
+    color: #000 !important;
+    transform: translateX(4px);
+    /* Interactive feedback */
+    padding-left: 24px !important;
+    /* Slight shift to make room for line/text move */
+}
+
+ul.side-nav li a:hover::before {
+    width: 4px;
+    /* Show line */
+    background-color: #555;
+    /* Dark Grey Line */
+}
+
+ul.side-nav li.active a {
+    background-color: #000 !important;
+    /* Black Active State */
+    color: #fff !important;
+    /* White Text */
+    font-weight: 600;
+    border: none !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+ul.side-nav li.active a::before {
+    width: 6px;
+    /* Thicker line for active */
+    background-color: #fff;
+    /* White Line */
+}
+
+ul.side-nav li.active a i {
+    color: #fff !important;
+    /* White Icon on Active */
+}
+
+ul.side-nav li {
     float: none;
     padding: 0 16px !important;
-    /* Adjust container padding for the rounded items */
     margin-bottom: 4px;
 }
 
@@ -157,8 +224,9 @@ footer {
 }
 
 .container {
-    width: 92% !important;
+    /* width: 92% !important; */
     max-width: 1200px !important;
+    padding-top: 28px;
 }
 
 /* --- 4. Hero Section Refined --- */
@@ -166,7 +234,7 @@ footer {
     min-height: 100vh;
     display: block !important;
     /* Changed from flex to block to allow padding to work simpler */
-    padding-top: 250px !important;
+    /* padding-top: 250px !important; */
     /* Push content down significantly */
     background: linear-gradient(135deg, #ffffff 0%, #f0f2f5 100%) !important;
 }
@@ -176,6 +244,15 @@ footer {
     padding-left: 50px !important;
     /* Left alignment */
     margin-top: 20px;
+}
+
+/* Description Text Styling */
+#intro .intro-content h5:not(.intro-text) {
+    color: #333 !important;
+    /* Darker grey */
+    font-weight: 500 !important;
+    line-height: 1.6;
+    margin-top: 15px;
 }
 
 /* Typing text */
@@ -190,18 +267,55 @@ footer {
 
 
 /* --- 5. Button & Icon Precision --- */
-.btn {
+/* --- 5. Button & Icon Precision --- */
+.btn,
+.readme,
+.contactme {
     height: 48px !important;
-    line-height: 48px !important;
+    line-height: normal !important;
+    /* Allow flex centering */
     padding: 0 28px !important;
     border-radius: 8px !important;
-    /* Slightly rounded, not pill */
     font-weight: 600 !important;
     font-size: 14px !important;
     text-transform: capitalize !important;
     letter-spacing: 0.5px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
-    background-color: var(--accent-color) !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px !important;
+    margin-right: 10px !important;
+}
+
+/* Primary Button (Read More) - Black */
+.readme {
+    background-color: #000 !important;
+    color: #fff !important;
+    border: 2px solid #000 !important;
+}
+
+.readme:hover {
+    background-color: #333 !important;
+    border-color: #333 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Secondary Button (Contact Me) - Outline/White */
+.contactme {
+    background-color: transparent !important;
+    color: #000 !important;
+    /* Black text */
+    border: 2px solid #000 !important;
+    /* Black border */
+}
+
+.contactme:hover {
+    background-color: #000 !important;
+    color: #fff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15) !important;
 }
 
 .btn:hover {
@@ -306,7 +420,7 @@ footer {
 
 
     .caption {
-        margin-top: 30px;
+        padding-top: 30px;
     }
 
     /* Fixed Mobile Header */
@@ -317,7 +431,7 @@ footer {
         width: 100%;
         z-index: 1000;
         background: #fff !important;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+        box-shadow: 0 2px 1px rgba(0, 0, 0, 0.05) !important;
         height: 64px !important;
         line-height: 64px !important;
     }
@@ -348,13 +462,50 @@ footer {
         /* Hide subtitle on mobile to save space */
     }
 
+    /* FIX: Hide the Desktop Sidebar completely on mobile to prevent conflict */
     ul.side-nav.fixed {
-        transform: translateX(-105%);
-        width: 280px !important;
+        display: none !important;
+    }
+
+    /* Style ONLY the Mobile Sidebar (#slide-out) */
+    ul#slide-out {
+        display: block !important;
+        /* Always valid element for JS */
+        width: 200px !important;
+        box-sizing: border-box !important;
+        /* Ensure padding doesn't expand width */
+        background-color: #fff !important;
         box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1) !important;
-        z-index: 1005 !important;
+        z-index: 10005 !important;
+        /* Super High Z-Index to stay on top */
         top: 0 !important;
-        padding-top: 20px !important;
+        padding-top: 60px !important;
+        height: 100% !important;
+        position: fixed !important;
+
+        /* Correct Hiding Mechanism for Materialize 0.95 */
+        /* We use 'left' instead of 'transform' so JS inline styles can override it */
+        left: -340px;
+        /* Increased from -300px to ensure total hiding */
+        transition: left 0.3s ease;
+        /* Smooth animation if JS doesn't animate */
+    }
+
+    /* REMOVE transform rule that caused conflict */
+    /* ul#slide-out:not(.active) rule deleted */
+
+    ul#slide-out .logo {
+        margin-top: 10px !important;
+        margin-bottom: 20px !important;
+        height: auto !important;
+        display: block !important;
+    }
+
+    ul#slide-out .profile-pic {
+        margin: 0 auto !important;
+        display: block !important;
+        width: 120px !important;
+        height: 120px !important;
     }
 
     /* Hamburger Menu Restyling - Integrated in Navbar */
@@ -365,7 +516,7 @@ footer {
         /* Reset fixed */
         left: 0;
         top: 0;
-        z-index: 1002;
+        z-index: 300;
         background: transparent !important;
         padding: 0 15px;
         margin: 0;
@@ -390,7 +541,7 @@ footer {
         width: 100% !important;
         /* Full width */
         max-width: 100% !important;
-        padding: 0 24px !important;
+        padding: 48px 24px !important;
         /* Precise edge padding (std 24px mobile) */
         margin: 0 !important;
     }
@@ -414,9 +565,10 @@ footer {
 /* Specific Mobile Portrait Fixes */
 @media only screen and (max-width: 600px) {
     #intro.section {
-        padding-top: 250px !important;
+        /* padding-top: 10px !important; */
         /* SIGNIFICANTLY INCREASED to push content down */
         text-align: left !important;
+        /* padding-top: -10px !important; */
         /* Force Left Alignment */
     }
 

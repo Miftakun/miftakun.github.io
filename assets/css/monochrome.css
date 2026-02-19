@@ -407,14 +407,15 @@ footer {
 /* Specific Mobile Portrait Fixes */
 @media only screen and (max-width: 600px) {
     #intro.section {
-        padding-top: 180px !important;
-        /* Much larger padding to clear fixed header */
+        padding-top: 250px !important;
+        /* SIGNIFICANTLY INCREASED to push content down */
         text-align: left !important;
         /* Force Left Alignment */
     }
 
     #intro .intro-content {
         padding-left: 0 !important;
+        /* Remove left padding */
         margin-top: 0;
         display: block !important;
         /* Remove Flex/Center */

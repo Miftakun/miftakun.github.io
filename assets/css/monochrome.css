@@ -310,27 +310,33 @@ footer {
         /* Ensure on top */
     }
 
-    /* Hamburger Menu Restyling - Fix Layering */
+    /* Hamburger Menu Restyling - Fix Layering & Size */
     .button-collapse {
         display: block !important;
         position: fixed;
         left: 20px;
         top: 20px;
         z-index: 1010 !important;
-        /* Higher than sidebar and header */
         background: rgba(255, 255, 255, 0.95);
-        padding: 8px 12px;
-        border-radius: 8px;
+        padding: 6px 10px;
+        /* Reduced padding */
+        border-radius: 6px;
+        /* Slightly smaller radius */
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        /* Slight shadow to lift it up */
         border: 1px solid #e0e0e0;
         color: #000 !important;
+        height: auto !important;
+        /* Allow auto height */
+        line-height: 1 !important;
     }
 
     .button-collapse i {
         color: #000 !important;
-        font-size: 24px;
+        font-size: 20px;
+        /* Smaller Icon Size */
         line-height: 1;
+        margin: 0 !important;
+        /* Remove any default margin */
     }
 
     /* Fix Width Issue - Reduce Gaps */
@@ -362,7 +368,8 @@ footer {
 /* Specific Mobile Portrait Fixes */
 @media only screen and (max-width: 600px) {
     #intro.section {
-        padding-top: 100px !important;
+        padding-top: 140px !important;
+        /* INCREASED top padding to prevent overlap */
         text-align: left !important;
         /* Force Left Alignment */
     }

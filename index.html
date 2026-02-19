@@ -1067,6 +1067,41 @@
         closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
       })
     })
+
+    // --- Custom Swipe Gesture for Mobile Sidebar ---
+    var touchStartX = 0;
+    var touchEndX = 0;
+    var swipeThreshold = 50; // Minimum distance to be considered a swipe
+    var edgeThreshold = 50;  // Only detect swipe from the left edge of screen
+
+    // Listen for touch start
+    document.addEventListener('touchstart', function (event) {
+      touchStartX = event.changedTouches[0].screenX;
+    }, false);
+
+    // Listen for touch end
+    document.addEventListener('touchend', function (event) {
+      touchEndX = event.changedTouches[0].screenX;
+      handleSwipe();
+    }, false);
+
+    function handleSwipe() {
+      // Calculate distance
+      var swipeDistance = touchEndX - touchStartX;
+
+      // Check for Swipe Right (Open Menu)
+      // Must start near the left edge (edgeThreshold) and be long enough (swipeThreshold)
+      if (touchStartX < edgeThreshold && swipeDistance > swipeThreshold) {
+        $('.button-collapse').sideNav('show'); // Trigger Materialize sideNav
+      }
+
+      // Check for Swipe Left (Close Menu)
+      // Can happen anywhere if the menu is open, or we can let Materialize handle the overlay click.
+      // But to be sure, if we swipe left significantly...
+      if (swipeDistance < -swipeThreshold) {
+        $('.button-collapse').sideNav('hide');
+      }
+    }
   </script>
 </body>
 

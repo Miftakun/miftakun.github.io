@@ -830,16 +830,16 @@ footer {
 .portfolio-footer .copyright-text {
     margin: 0;
     color: #555;
-    font-size: 0.95rem;
-    font-weight: 600;
+    font-size: 0.8rem;
+    font-weight: 500;
 }
 
 .portfolio-footer small {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     color: #999;
     font-style: italic;
     display: block;
-    margin-top: 8px;
+    margin-top: 6px;
 }
 
 /* Dark Mode Footer Adjustments */
@@ -854,4 +854,11 @@ body.dark-theme .portfolio-footer .copyright-text {
 
 body.dark-theme .portfolio-footer small {
     color: #555;
+}
+
+/* Extra Bottom Padding for Mobile (To prevent overlap with floating buttons) */
+@media only screen and (max-width: 600px) {
+    .portfolio-footer {
+        padding-bottom: 95px !important;
+    }
 }

@@ -774,3 +774,8 @@ footer {
 
 
 /* White */
+/* CSS to fix image aspect ratios inside cards to prevent layout shifts */
+.card .card-image img[loading="lazy"] {
+    min-height: 200px;
+    background-color: var(--bg-secondary);
+}

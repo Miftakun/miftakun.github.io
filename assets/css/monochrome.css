@@ -694,8 +694,17 @@ footer {
     /* Fix Logo Layout on Mobile (Experience & Education) */
     #experience .col.s12.m2,
     #education .col.s12.m2 {
-        text-align: center !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
         margin-bottom: 20px !important;
+        text-align: center !important;
+    }
+
+    #experience .col.s12.m2 img,
+    #education .col.s12.m2 img {
+        margin: 0 auto !important;
+        display: block !important;
     }
 }
 

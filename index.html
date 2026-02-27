@@ -162,6 +162,7 @@
     }
 
     body.dark-theme .card,
+    body.dark-theme .card-reveal,
     body.dark-theme ul.side-nav,
     body.dark-theme ul#slide-out,
     body.dark-theme nav.hide-on-large-only,
@@ -1568,10 +1569,12 @@
           btn.classList.add('active');
 
           const filterValue = btn.getAttribute('data-filter');
+          let visibleCount = 0;
 
           filterItems.forEach(item => {
             if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
               item.style.display = 'block';
+              visibleCount++;
               setTimeout(() => {
                 item.style.opacity = '1';
                 item.style.transform = 'scale(1)';
@@ -1584,6 +1587,36 @@
               }, 300); // 300ms sesuai durasi css transition
             }
           });
+
+          // Handle "Coming Soon" Placeholder
+          let comingSoonCard = filterItemsContainer.querySelector('.coming-soon-placeholder');
+          if (visibleCount === 0) {
+            if (!comingSoonCard) {
+              comingSoonCard = document.createElement('div');
+              comingSoonCard.className = 'col s12 coming-soon-placeholder';
+              comingSoonCard.style.opacity = '0';
+              comingSoonCard.style.transition = 'opacity 0.3s ease';
+              comingSoonCard.innerHTML = `
+                <div style="padding: 60px 20px; text-align: center; border: 2px dashed var(--text-secondary); border-radius: 16px; margin-top: 20px;">
+                  <i class="fa fa-code" style="font-size: 40px; color: var(--text-secondary); margin-bottom: 15px; opacity: 0.6;"></i>
+                  <h5 style="color: var(--text-primary); font-weight: 600; font-family: 'Space Grotesk', sans-serif;">New project coming soon</h5>
+                  <p style="color: var(--text-secondary);">Currently brewing something awesome in this category. Stay tuned!</p>
+                </div>
+              `;
+              filterItemsContainer.appendChild(comingSoonCard);
+            }
+            comingSoonCard.style.display = 'block';
+            setTimeout(() => {
+              comingSoonCard.style.opacity = '1';
+            }, 350); // Muncrat pelan setelah tertutup item yg hilang
+          } else {
+            if (comingSoonCard) {
+              comingSoonCard.style.opacity = '0';
+              setTimeout(() => {
+                comingSoonCard.style.display = 'none';
+              }, 300);
+            }
+          }
         });
       });
     });

@@ -112,8 +112,8 @@
       right: 30px;
       width: 50px;
       height: 50px;
-      background-color: rgba(0, 150, 136, 0.7);
-      /* teal */
+      background-color: rgba(0, 0, 0, 0.7);
+      /* black */
       color: white;
       border-radius: 50%;
       display: flex;
@@ -128,7 +128,7 @@
     }
 
     .back-to-top:hover {
-      background-color: rgba(0, 150, 136, 1);
+      background-color: rgba(0, 0, 0, 1);
       transform: translateY(-5px);
       color: white;
     }
@@ -164,6 +164,7 @@
 
     body.dark-theme .card,
     body.dark-theme ul.side-nav,
+    body.dark-theme ul#slide-out,
     body.dark-theme nav.hide-on-large-only,
     body.dark-theme .code-snippet-container {
       background-color: var(--bg-secondary) !important;
@@ -198,11 +199,19 @@
       color: #e0e0e0 !important;
     }
 
-    /* Force visibility Teks Sidebar Desktop dan Mobile Nav */
+    /* Force visibility Teks Sidebar Desktop dan Mobile Nav (Posisi umum / scrolled) */
     body.dark-theme nav ul.side-nav li a,
     body.dark-theme nav.hide-on-large-only .name-title a,
-    body.dark-theme nav.hide-on-large-only .name-title span.black-text {
+    body.dark-theme nav.hide-on-large-only .name-title span.black-text,
+    body.dark-theme nav.hide-on-large-only .button-collapse i {
       color: var(--text-primary) !important;
+    }
+
+    /* Force warna Hitam saat Mobile Nav berada di posisi Transparan Background (Scroll atas) */
+    body.dark-theme nav.transparent-mode .name-title a#name,
+    body.dark-theme nav.transparent-mode .name-title span.black-text,
+    body.dark-theme nav.transparent-mode .button-collapse i {
+      color: #000000 !important;
     }
 
     /* Kill existing Teal/Green/Grey/Black text colors in Dark Mode */
@@ -218,6 +227,14 @@
     body.dark-theme .blue-grey {
       background-color: var(--text-primary) !important;
       color: #000000 !important;
+    }
+
+    /* Force Specificity agar menindas aturan `span:not(.typing)` */
+    body.dark-theme h2 span.name-badge,
+    body.dark-theme span.name-badge {
+      background-color: #ffffff !important;
+      color: #000000 !important;
+      padding: 0 10px;
     }
 
     /* Override `.white-text` class yang dipakai di title .teal */
@@ -286,6 +303,17 @@
     body.dark-theme .filter-btn:hover,
     body.dark-theme .filter-btn.active {
       background-color: #ffffff !important;
+      color: #000000 !important;
+    }
+
+    /* Fixed visibility for back-to-top on dark background */
+    body.dark-theme .back-to-top {
+      background-color: rgba(255, 255, 255, 0.7) !important;
+      color: #000000 !important;
+    }
+
+    body.dark-theme .back-to-top:hover {
+      background-color: rgba(255, 255, 255, 1) !important;
       color: #000000 !important;
     }
 
@@ -564,7 +592,7 @@
         <div class="col-md-9">
           <div class="content section-padding valign intro-content">
             <div class="caption">
-              <h2>Hi, I'm <span class="teal">Miftakun Niam.</span></h2>
+              <h2>Hi, I'm <span class="teal name-badge">Miftakun Niam.</span></h2>
               <h5 class="intro-text">A <span class="typing typing-text teal-text"></span></h5>
               <!-- <h5 style="color:#00796b">A <span class="typing" style="font-weight: 300; color:#fff"></span></h5> -->
               <h5>Experienced UI/UX Designer for more than one year. I'm also passionate about Android development,
@@ -1563,13 +1591,23 @@
     themeBtn.addEventListener('click', () => {
       document.body.classList.toggle('dark-theme');
 
-      if (document.body.classList.contains('dark-theme')) {
+      const isDark = document.body.classList.contains('dark-theme');
+
+      if (isDark) {
         localStorage.setItem('theme', 'dark');
         themeIcon.classList.replace('fa-moon-o', 'fa-sun-o');
       } else {
         localStorage.setItem('theme', 'light');
         themeIcon.classList.replace('fa-sun-o', 'fa-moon-o');
       }
+
+      // Re-render Partikel untuk menyesuaikan tema segera
+      if (typeof window.pJSDom !== 'undefined' && window.pJSDom.length > 0) {
+        window.pJSDom[0].pJS.fn.vendors.destroypJS();
+        window.pJSDom = [];
+      }
+      initParticles(isDark ? '#e0e0e0' : '#121212');
+
     });
   </script>
 
@@ -1598,91 +1636,98 @@
   <!-- --- 6. Particles.js (Hero Background Effect) --- -->
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script>
-    particlesJS("particles-js", {
-      particles: {
-        number: {
-          value: 45, // Jumlah partikel
-          density: {
-            enable: true,
-            value_area: 800
-          }
-        },
-        color: {
-          value: "#888888" // Warna Abu-abu Monokrom yang masuk di terang dan gelap
-        },
-        shape: {
-          type: "circle",
-          stroke: {
-            width: 0,
-            color: "#000000"
-          },
-        },
-        opacity: {
-          value: 0.3, // Agak transparan 
-          random: true,
-          anim: {
-            enable: false
-          }
-        },
-        size: {
-          value: 4,
-          random: true,
-          anim: {
-            enable: true,
-            speed: 2,
-            size_min: 0.1,
-            sync: false
-          }
-        },
-        line_linked: {
-          enable: true,
-          distance: 150,
-          color: "#888888", // Grey lines monokrom
-          opacity: 0.2,
-          width: 1
-        },
-        move: {
-          enable: true,
-          speed: 1.5, // Lambat, menenangkan, elegan
-          direction: "none",
-          random: true,
-          straight: false,
-          out_mode: "out",
-          bounce: false,
-          attract: {
-            enable: false,
-            rotateX: 600,
-            rotateY: 1200
-          }
-        }
-      },
-      interactivity: {
-        detect_on: "canvas",
-        events: {
-          onhover: {
-            enable: true,
-            mode: "grab" // Partikel saling meraih saat didekatkan mouse
-          },
-          onclick: {
-            enable: true,
-            mode: "push" // Munculkan partikel baru saat diklik
-          },
-          resize: true
-        },
-        modes: {
-          grab: {
-            distance: 180,
-            line_linked: {
-              opacity: 0.5 // Garis menjadi lebih tebal/nyata jika ditangkap mouse
+    // Membungkus logic particle dalam fungsi eksekusi untuk dimuat dinamis
+    function initParticles(particleColor) {
+      particlesJS("particles-js", {
+        particles: {
+          number: {
+            value: 45, // Jumlah partikel
+            density: {
+              enable: true,
+              value_area: 800
             }
           },
-          push: {
-            particles_nb: 3
+          color: {
+            value: particleColor
+          },
+          shape: {
+            type: "circle",
+            stroke: {
+              width: 0,
+              color: "#000000"
+            },
+          },
+          opacity: {
+            value: 0.3, // Agak transparan 
+            random: true,
+            anim: {
+              enable: false
+            }
+          },
+          size: {
+            value: 4,
+            random: true,
+            anim: {
+              enable: true,
+              speed: 2,
+              size_min: 0.1,
+              sync: false
+            }
+          },
+          line_linked: {
+            enable: true,
+            distance: 150,
+            color: particleColor,
+            opacity: 0.2,
+            width: 1
+          },
+          move: {
+            enable: true,
+            speed: 1.5, // Lambat, menenangkan, elegan
+            direction: "none",
+            random: true,
+            straight: false,
+            out_mode: "out",
+            bounce: false,
+            attract: {
+              enable: false,
+              rotateX: 600,
+              rotateY: 1200
+            }
           }
-        }
-      },
-      retina_detect: true
-    });
+        },
+        interactivity: {
+          detect_on: "canvas",
+          events: {
+            onhover: {
+              enable: true,
+              mode: "grab" // Partikel saling meraih saat didekatkan mouse
+            },
+            onclick: {
+              enable: true,
+              mode: "push" // Munculkan partikel baru saat diklik
+            },
+            resize: true
+          },
+          modes: {
+            grab: {
+              distance: 180,
+              line_linked: {
+                opacity: 0.5 // Garis menjadi lebih tebal/nyata jika ditangkap mouse
+              }
+            },
+            push: {
+              particles_nb: 3
+            }
+          }
+        },
+        retina_detect: true
+      });
+    }
+
+    // Eksekusi penarikan memori halaman pertama dimuat
+    const isInitialDark = document.body.classList.contains('dark-theme');
+    initParticles(isInitialDark ? '#ffffff' : '#000000'); 
   </script>
 </body>
 

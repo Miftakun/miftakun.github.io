@@ -695,24 +695,29 @@ footer {
     #experience .col.s12.m2,
     #education .col.s12.m2 {
         display: block !important;
+        float: none !important;
         width: 100% !important;
         padding: 0 !important;
-        margin: 0 auto 20px auto !important;
+        margin: 0 0 20px 0 !important;
         text-align: center !important;
     }
 
     #experience .col.s12.m2 a,
     #education .col.s12.m2 a {
         display: block !important;
-        margin: 0 auto !important;
+        float: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
         text-align: center !important;
     }
 
     #experience .col.s12.m2 img,
     #education .col.s12.m2 img {
+        float: none !important;
         margin: 0 auto !important;
+        padding: 0 !important;
         display: inline-block !important;
-        /* using inline-block centers inside text-align */
+        max-width: 100px !important;
     }
 }
 

@@ -53,6 +53,19 @@
       height: 100%;
       width: 100%;
     }
+
+    /* --- Scroll Reveal Classes --- */
+    .reveal-item {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+      /* transisi yang modern dan smooth */
+    }
+
+    .reveal-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
   <title>Miftakun Niam | Frontend UX Engineer</title>
 
@@ -1124,6 +1137,67 @@
         $('.button-collapse').sideNav('hide');
       }
     }
+
+    // --- 1. Smooth Scrolling Script ---
+    $('a[href^="#"]').on('click', function (event) {
+      if (this.hash !== "" && this.hash !== "#!") { // hindari scroll hash kosong
+        event.preventDefault();
+        var hash = this.hash;
+
+        $('html, body').animate({
+          scrollTop: $(hash).offset().top
+        }, 800, function () {
+          window.location.hash = hash;
+        });
+
+        // Automatically hide mobile sidebar after clicking a menu item
+        if (window.innerWidth < 992) {
+          $('.button-collapse').sideNav('hide');
+        }
+      }
+    });
+
+    // --- 2. Scroll Reveal Script (Intersection Observer) ---
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.15 // muncul ketika 15% dari elemen terlihat
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Menerapkan class efek kemunculan ke setiap section selain header (intro)
+    document.querySelectorAll('section:not(#intro)').forEach((section) => {
+      section.classList.add('reveal-item');
+      observer.observe(section);
+    });
+
+    // Menerapkan class efek kemunculan dan observasi pada komponen kartu secara individual 
+    document.querySelectorAll('.card').forEach((card, index) => {
+      card.classList.add('reveal-item');
+      // Berikan delay bertingkat pada transisi untuk efek "Cascade/waterfall" 
+      card.style.transitionDelay = `${index % 3 * 0.1}s`;
+      observer.observe(card);
+    });
+  </script>
+
+  <!-- --- 3. 3D Card Hover Effect (Vanilla-tilt.js) --- -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
+  <script>
+    VanillaTilt.init(document.querySelectorAll(".card"), {
+      max: 10,           // kemiringan maksimum dalam derajat
+      speed: 400,        // kecepatan efek transisi masuk/keluar
+      glare: true,       // efek kilau kaca
+      "max-glare": 0.15, // opasitas maksimum efek kilau
+      perspective: 1000  // kedalaman perspektif 3D
+    });
   </script>
 </body>
 

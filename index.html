@@ -66,6 +66,78 @@
       opacity: 1;
       transform: translateY(0);
     }
+
+    /* --- Filter Controls --- */
+    .filter-controls {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background-color: transparent !important;
+      color: #009688 !important;
+      /* teal */
+      border: 1px solid #009688;
+      box-shadow: none;
+      border-radius: 20px;
+      text-transform: capitalize;
+      transition: all 0.3s ease;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background-color: #009688 !important;
+      color: white !important;
+    }
+
+    .filter-item {
+      transition: all 0.3s ease;
+    }
+
+    /* --- Sticky Mobile Navbar --- */
+    nav.trigger {
+      transition: background-color 0.4s ease, box-shadow 0.4s ease !important;
+    }
+
+    nav.trigger.transparent-mode {
+      background-color: transparent !important;
+      box-shadow: none !important;
+    }
+
+    /* --- Back to Top Button --- */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background-color: rgba(0, 150, 136, 0.7);
+      /* teal */
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 1000;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .back-to-top:hover {
+      background-color: rgba(0, 150, 136, 1);
+      transform: translateY(-5px);
+      color: white;
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
   </style>
   <title>Miftakun Niam | Frontend UX Engineer</title>
 
@@ -212,7 +284,8 @@
   </nav>
 
   <!-- Nav class 2 -->
-  <nav class="hide-on-large only trigger z-depth-1" aria-label="Mobile navigation trigger">
+  <nav class="hide-on-large only trigger z-depth-1 transparent-mode" aria-label="Mobile navigation trigger"
+    style="position: fixed; top: 0; z-index: 998; width: 100%;">
     <a aria-label="Toggle visibility of the mobile navbar" href="#" data-activates="slide-out"
       class="button-collapse"><i class="mdi-navigation-menu"></i></a>
     <div class="name-title">
@@ -598,8 +671,14 @@
     <section id="projectdesigns" class="section scrollspy">
       <h3 class="page-title white-text teal">Project Designs</h3>
       <div class="container">
+        <!-- Filter Controls -->
+        <div class="row filter-controls" style="margin-bottom: 30px;">
+          <button class="btn filter-btn waves-effect waves-light active" data-filter="all">All</button>
+          <button class="btn filter-btn waves-effect waves-light" data-filter="web">Web Design</button>
+          <button class="btn filter-btn waves-effect waves-light" data-filter="mobile">Mobile Design</button>
+        </div>
         <div class="row">
-          <div class="col s12 m6 l4">
+          <div class="col s12 m6 l4 filter-item" data-category="web">
             <div class="card medium">
               <div class="card-image waves-effect waves-block waves-light">
                 <img alt="music streaming app" src="/assets/img/mobile-lounching-design.png"
@@ -638,7 +717,7 @@
               </div>
             </div>
           </div>
-          <div class="col s12 m6 l4">
+          <div class="col s12 m6 l4 filter-item" data-category="mobile">
             <div class="card medium">
               <div class="card-image waves-effect waves-block waves-light">
                 <img alt="quiz app" src="/assets/img/mobile-coffee-design.png" class="activator img-responsive">
@@ -676,7 +755,7 @@
               </div>
             </div>
           </div>
-          <div class="col s12 m6 l4">
+          <div class="col s12 m6 l4 filter-item" data-category="web">
             <div class="card medium">
               <div class="card-image waves-effect waves-block waves-light">
                 <img alt="Blue Roof Design-Web" src="/assets/img/roof-design-web.png" class="activator img-responsive">
@@ -712,7 +791,7 @@
             </div>
           </div>
 
-          <div class="col s12 m6 l4">
+          <div class="col s12 m6 l4 filter-item" data-category="web">
             <div class="card medium">
               <div class="card-image waves-effect waves-block waves-light">
                 <img alt="Torche Calculator Design-Web" src="/assets/img/torche-calculator.png"
@@ -749,7 +828,7 @@
             </div>
           </div>
 
-          <div class="col s12 m6 l4">
+          <div class="col s12 m6 l4 filter-item" data-category="misc">
             <div class="card medium">
               <div class="card-image waves-effect waves-block waves-light">
                 <img alt="New Project Designs Coming Soon" src="/assets/img/comingsoon.jpg"
@@ -768,8 +847,14 @@
     <section id="projectapps" class="section scrollspy">
       <h3 class="page-title white-text teal">Project Apps</h3>
       <div class="container">
+        <!-- Filter Controls -->
+        <div class="row filter-controls" style="margin-bottom: 30px;">
+          <button class="btn filter-btn waves-effect waves-light active" data-filter="all">All</button>
+          <button class="btn filter-btn waves-effect waves-light" data-filter="web">Web App</button>
+          <button class="btn filter-btn waves-effect waves-light" data-filter="mobile">Mobile App</button>
+        </div>
         <div class="row">
-          <div class="col s12 m6 l4">
+          <div class="col s12 m6 l4 filter-item" data-category="mobile">
             <div class="card medium">
               <div class="card-image waves-effect waves-block waves-light">
                 <img alt="Destination Info-App" src="/assets/img/DIA.jpg" class="activator img-responsive">
@@ -802,7 +887,7 @@
               </div>
             </div>
           </div>
-          <div class="col s12 m6 l4">
+          <div class="col s12 m6 l4 filter-item" data-category="mobile">
             <div class="card medium">
               <div class="card-image waves-effect waves-block waves-light">
                 <img alt="Football Players Info-App" src="/assets/img/PFA.jpg" class="activator img-responsive">
@@ -837,7 +922,7 @@
           </div>
 
           <!-- Coming Soon Project -->
-          <div class="col s12 m6 l4">
+          <div class="col s12 m6 l4 filter-item" data-category="misc">
             <div class="card medium">
               <div class="card-image waves-effect waves-block waves-light">
                 <img alt="Screenshot of web app" src="/assets/img/comingsoon.jpg" class="activator img-responsive">
@@ -1072,6 +1157,11 @@
         </p>
       </div>
     </section>
+
+    <!-- Back to Top Button -->
+    <a href="#intro" class="back-to-top" aria-label="Back to Top">
+      <i class="fa fa-chevron-up"></i>
+    </a>
   </main>
 
   <!-- typed.js -->
@@ -1185,6 +1275,62 @@
       // Berikan delay bertingkat pada transisi untuk efek "Cascade/waterfall" 
       card.style.transitionDelay = `${index % 3 * 0.1}s`;
       observer.observe(card);
+    });
+
+    // --- 3. Dynamic Sticky Mobile Navbar ---
+    window.addEventListener('scroll', function () {
+      var mobileNav = document.querySelector('.hide-on-large.trigger, .hide-on-large-only.trigger');
+      if (mobileNav) {
+        if (window.scrollY > 50) {
+          mobileNav.classList.remove('transparent-mode');
+        } else {
+          mobileNav.classList.add('transparent-mode');
+        }
+      }
+    });
+
+    // --- 4. Filtering Project Designs & Apps ---
+    const filterGroups = document.querySelectorAll('.filter-controls');
+
+    filterGroups.forEach(group => {
+      const filterBtns = group.querySelectorAll('.filter-btn');
+      const filterItemsContainer = group.nextElementSibling; // div.row yang menampung items
+      const filterItems = filterItemsContainer.querySelectorAll('.filter-item');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          // Remove active class from buttons in this specific group
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          const filterValue = btn.getAttribute('data-filter');
+
+          filterItems.forEach(item => {
+            if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+              item.style.display = 'block';
+              setTimeout(() => {
+                item.style.opacity = '1';
+                item.style.transform = 'scale(1)';
+              }, 50);
+            } else {
+              item.style.opacity = '0';
+              item.style.transform = 'scale(0.8)';
+              setTimeout(() => {
+                item.style.display = 'none';
+              }, 300); // 300ms sesuai durasi css transition
+            }
+          });
+        });
+      });
+    });
+
+    // --- 5. Back to Top Button Visibility ---
+    $(window).scroll(function () {
+      if ($(this).scrollTop() > 400) {
+        $('.back-to-top').addClass('show');
+      } else {
+        $('.back-to-top').removeClass('show');
+      }
     });
   </script>
 

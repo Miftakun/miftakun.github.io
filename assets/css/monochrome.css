@@ -694,17 +694,25 @@ footer {
     /* Fix Logo Layout on Mobile (Experience & Education) */
     #experience .col.s12.m2,
     #education .col.s12.m2 {
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        margin-bottom: 20px !important;
+        display: block !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 auto 20px auto !important;
+        text-align: center !important;
+    }
+
+    #experience .col.s12.m2 a,
+    #education .col.s12.m2 a {
+        display: block !important;
+        margin: 0 auto !important;
         text-align: center !important;
     }
 
     #experience .col.s12.m2 img,
     #education .col.s12.m2 img {
         margin: 0 auto !important;
-        display: block !important;
+        display: inline-block !important;
+        /* using inline-block centers inside text-align */
     }
 }
 

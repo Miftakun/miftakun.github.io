@@ -77,9 +77,8 @@
 
     .filter-btn {
       background-color: transparent !important;
-      color: #009688 !important;
-      /* teal */
-      border: 1px solid #009688;
+      color: #000000 !important;
+      border: 1px solid #000000 !important;
       box-shadow: none;
       border-radius: 20px;
       text-transform: capitalize;
@@ -88,8 +87,8 @@
 
     .filter-btn:hover,
     .filter-btn.active {
-      background-color: #009688 !important;
-      color: white !important;
+      background-color: #000000 !important;
+      color: #ffffff !important;
     }
 
     .filter-item {
@@ -137,6 +136,215 @@
     .back-to-top.show {
       opacity: 1;
       visibility: visible;
+    }
+
+    /* --- Partikel JS Background --- */
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-color: transparent;
+      z-index: 0;
+    }
+
+    /* --- Dark Mode Variables & Overrides --- */
+    body.dark-theme {
+      --bg-color: #121212 !important;
+      --bg-secondary: #1e1e1e !important;
+      --text-primary: #f0f0f0 !important;
+      --text-secondary: #aaaaaa !important;
+      --accent-color: #ffffff !important;
+      /* White accent untuk Monokrom */
+      --border-color: #333333 !important;
+      background-color: var(--bg-color) !important;
+      color: var(--text-primary) !important;
+    }
+
+    body.dark-theme .card,
+    body.dark-theme ul.side-nav,
+    body.dark-theme nav.hide-on-large-only,
+    body.dark-theme .code-snippet-container {
+      background-color: var(--bg-secondary) !important;
+      border-color: var(--border-color) !important;
+    }
+
+    body.dark-theme h1,
+    body.dark-theme h2,
+    body.dark-theme h3,
+    body.dark-theme h4,
+    body.dark-theme h5,
+    body.dark-theme h6,
+    body.dark-theme p,
+    body.dark-theme span:not(.typing),
+    body.dark-theme li,
+    body.dark-theme a,
+    body.dark-theme i,
+    body.dark-theme .card .card-title,
+    body.dark-theme .role,
+    body.dark-theme .brown-text,
+    body.dark-theme ul.side-nav li a,
+    body.dark-theme ul.side-nav.fixed.table-of-contents li:not(.logo) a span,
+    body.dark-theme ul#slide-out li:not(.logo) a span,
+    body.dark-theme .name-title a#name,
+    body.dark-theme .name-title span {
+      color: var(--text-primary) !important;
+    }
+
+    /* Force visibility Headline Singkat di Hero Banner */
+    body.dark-theme #intro .intro-content h5,
+    body.dark-theme #intro .intro-content h5:not(.intro-text) {
+      color: #e0e0e0 !important;
+    }
+
+    /* Force visibility Teks Sidebar Desktop dan Mobile Nav */
+    body.dark-theme nav ul.side-nav li a,
+    body.dark-theme nav.hide-on-large-only .name-title a,
+    body.dark-theme nav.hide-on-large-only .name-title span.black-text {
+      color: var(--text-primary) !important;
+    }
+
+    /* Kill existing Teal/Green/Grey/Black text colors in Dark Mode */
+    body.dark-theme .teal-text,
+    body.dark-theme .green-text,
+    body.dark-theme .black-text,
+    body.dark-theme .blue-grey-text {
+      color: var(--text-primary) !important;
+    }
+
+    body.dark-theme .teal,
+    body.dark-theme .green,
+    body.dark-theme .blue-grey {
+      background-color: var(--text-primary) !important;
+      color: #000000 !important;
+    }
+
+    /* Override `.white-text` class yang dipakai di title .teal */
+    body.dark-theme .white-text.teal {
+      color: #000000 !important;
+    }
+
+    body.dark-theme a.hoverline:hover {
+      border-bottom: 3px solid var(--text-primary) !important;
+    }
+
+    /* Pastikan teks berlari (.typing) menjadi putih murni */
+    body.dark-theme .typing {
+      background: none !important;
+      color: #ffffff !important;
+      -webkit-text-fill-color: #ffffff !important;
+    }
+
+    body.dark-theme .icon-btn {
+      background: var(--bg-secondary) !important;
+      border-color: var(--border-color) !important;
+      color: var(--text-primary) !important;
+    }
+
+    body.dark-theme .icon-btn:hover {
+      background: var(--accent-color) !important;
+      color: #000 !important;
+      border-color: var(--accent-color) !important;
+    }
+
+    body.dark-theme .readme {
+      background-color: var(--text-primary) !important;
+      color: var(--bg-color) !important;
+      border-color: var(--text-primary) !important;
+    }
+
+    body.dark-theme .readme:hover {
+      background-color: #ccc !important;
+    }
+
+    body.dark-theme .contactme {
+      color: var(--text-primary) !important;
+      border-color: var(--text-primary) !important;
+    }
+
+    body.dark-theme .contactme:hover {
+      background-color: var(--text-primary) !important;
+      color: var(--bg-color) !important;
+    }
+
+    /* Fixed Contact section floating icon buttons */
+    body.dark-theme .btn-floating {
+      background-color: var(--text-primary) !important;
+    }
+
+    body.dark-theme .btn-floating i {
+      color: #000000 !important;
+    }
+
+    body.dark-theme .filter-btn {
+      color: #ffffff !important;
+      border-color: #ffffff !important;
+      background-color: transparent !important;
+    }
+
+    body.dark-theme .filter-btn:hover,
+    body.dark-theme .filter-btn.active {
+      background-color: #ffffff !important;
+      color: #000000 !important;
+    }
+
+    body.dark-theme main {
+      background-image: radial-gradient(#333 1.5px, transparent 1.5px), radial-gradient(#333 1.5px, #121212 1.5px) !important;
+      background-color: #121212 !important;
+      background-size: 30px 30px;
+      background-position: 0 0, 15px 15px;
+    }
+
+    body.dark-theme #intro.section {
+      background: transparent !important;
+    }
+
+    body.dark-theme nav.trigger:not(.transparent-mode) {
+      background-color: var(--bg-secondary) !important;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5) !important;
+    }
+
+    body.dark-theme ul.side-nav li.active a {
+      background-color: #333 !important;
+      color: #fff !important;
+    }
+
+    body.dark-theme ul.side-nav li a:hover {
+      background-color: #222 !important;
+    }
+
+    /* Floating Theme Toggle */
+    .theme-toggle-fab {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      width: 50px;
+      height: 50px;
+      background-color: #fff;
+      color: #333;
+      border: 1px solid #ddd;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      cursor: pointer;
+      z-index: 1000;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .theme-toggle-fab:hover {
+      transform: scale(1.1) rotate(15deg);
+    }
+
+    body.dark-theme .theme-toggle-fab {
+      background-color: #1e1e1e;
+      color: #f1c40f;
+      /* Kuning emas untuk logo bulan/matahari */
+      border-color: #333;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
   </style>
   <title>Miftakun Niam | Frontend UX Engineer</title>
@@ -348,6 +556,9 @@
   <main>
     <!-- First Section: Heading lines and image -->
     <section id="intro" class="section scrollspy full-height">
+      <!-- Partikel Background -->
+      <div id="particles-js"></div>
+
       <div class="overlay"></div>
       <div class="container">
         <div class="col-md-9">
@@ -1162,6 +1373,11 @@
     <a href="#intro" class="back-to-top" aria-label="Back to Top">
       <i class="fa fa-chevron-up"></i>
     </a>
+
+    <!-- Floating Dark Mode Toggle -->
+    <button class="theme-toggle-fab" id="theme-toggle-btn" aria-label="Toggle Dark Mode">
+      <i class="fa fa-moon-o"></i>
+    </button>
   </main>
 
   <!-- typed.js -->
@@ -1332,9 +1548,32 @@
         $('.back-to-top').removeClass('show');
       }
     });
+
+    // --- 7. Dark Mode Toggle Script ---
+    const themeBtn = document.getElementById('theme-toggle-btn');
+    const themeIcon = themeBtn.querySelector('i');
+
+    // Cek LocalStorage ketika pertama kali dimuat
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark-theme');
+      themeIcon.classList.replace('fa-moon-o', 'fa-sun-o');
+    }
+
+    // Aksi Klik pada tombol theme
+    themeBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-theme');
+
+      if (document.body.classList.contains('dark-theme')) {
+        localStorage.setItem('theme', 'dark');
+        themeIcon.classList.replace('fa-moon-o', 'fa-sun-o');
+      } else {
+        localStorage.setItem('theme', 'light');
+        themeIcon.classList.replace('fa-sun-o', 'fa-moon-o');
+      }
+    });
   </script>
 
-  <!-- --- 3. 3D Card Hover Effect (Vanilla-tilt.js) --- -->
+  <!-- --- 3. 3D Card & Snippet Hover Effect (Vanilla-tilt.js) --- -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
   <script>
     VanillaTilt.init(document.querySelectorAll(".card"), {
@@ -1343,6 +1582,106 @@
       glare: true,       // efek kilau kaca
       "max-glare": 0.15, // opasitas maksimum efek kilau
       perspective: 1000  // kedalaman perspektif 3D
+    });
+
+    // Menerapkan tilt juga untuk hiasan code snippet agar terlihat 3D melayang
+    VanillaTilt.init(document.querySelectorAll(".code-snippet-container"), {
+      max: 12,
+      speed: 350,
+      glare: true,
+      "max-glare": 0.3, // Kilau kaca lebih terang untuk container gelap
+      perspective: 800,
+      scale: 1.05
+    });
+  </script>
+
+  <!-- --- 6. Particles.js (Hero Background Effect) --- -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      particles: {
+        number: {
+          value: 45, // Jumlah partikel
+          density: {
+            enable: true,
+            value_area: 800
+          }
+        },
+        color: {
+          value: "#888888" // Warna Abu-abu Monokrom yang masuk di terang dan gelap
+        },
+        shape: {
+          type: "circle",
+          stroke: {
+            width: 0,
+            color: "#000000"
+          },
+        },
+        opacity: {
+          value: 0.3, // Agak transparan 
+          random: true,
+          anim: {
+            enable: false
+          }
+        },
+        size: {
+          value: 4,
+          random: true,
+          anim: {
+            enable: true,
+            speed: 2,
+            size_min: 0.1,
+            sync: false
+          }
+        },
+        line_linked: {
+          enable: true,
+          distance: 150,
+          color: "#888888", // Grey lines monokrom
+          opacity: 0.2,
+          width: 1
+        },
+        move: {
+          enable: true,
+          speed: 1.5, // Lambat, menenangkan, elegan
+          direction: "none",
+          random: true,
+          straight: false,
+          out_mode: "out",
+          bounce: false,
+          attract: {
+            enable: false,
+            rotateX: 600,
+            rotateY: 1200
+          }
+        }
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: {
+            enable: true,
+            mode: "grab" // Partikel saling meraih saat didekatkan mouse
+          },
+          onclick: {
+            enable: true,
+            mode: "push" // Munculkan partikel baru saat diklik
+          },
+          resize: true
+        },
+        modes: {
+          grab: {
+            distance: 180,
+            line_linked: {
+              opacity: 0.5 // Garis menjadi lebih tebal/nyata jika ditangkap mouse
+            }
+          },
+          push: {
+            particles_nb: 3
+          }
+        }
+      },
+      retina_detect: true
     });
   </script>
 </body>

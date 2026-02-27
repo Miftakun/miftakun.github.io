@@ -156,7 +156,6 @@
       --text-primary: #f0f0f0 !important;
       --text-secondary: #aaaaaa !important;
       --accent-color: #ffffff !important;
-      /* White accent untuk Monokrom */
       --border-color: #333333 !important;
       background-color: var(--bg-color) !important;
       color: var(--text-primary) !important;
@@ -265,6 +264,10 @@
       border-color: var(--accent-color) !important;
     }
 
+    body.dark-theme .icon-btn:hover i {
+      color: #000000 !important;
+    }
+
     body.dark-theme .readme {
       background-color: var(--text-primary) !important;
       color: var(--bg-color) !important;
@@ -318,14 +321,20 @@
     }
 
     body.dark-theme main {
-      background-image: radial-gradient(#333 1.5px, transparent 1.5px), radial-gradient(#333 1.5px, #121212 1.5px) !important;
-      background-color: #121212 !important;
-      background-size: 30px 30px;
-      background-position: 0 0, 15px 15px;
+      background-image: url('../../assets/img/bg.png') !important;
+      background-repeat: repeat !important;
+      background-color: #1a1a1a !important;
+      /* Warna abu-abu sangat gelap agar grid background tetap terbaca tanpa menyilaukan */
+      background-blend-mode: color-burn !important;
+      /* Membakar pola grid menjadi garis hitam elegan di atas background dark mode */
     }
 
     body.dark-theme #intro.section {
-      background: transparent !important;
+      background-image: radial-gradient(#444 1.5px, transparent 1.5px), radial-gradient(#444 1.5px, #121212 1.5px) !important;
+      background-color: #121212 !important;
+      background-size: 30px 30px !important;
+      background-position: 0 0, 15px 15px !important;
+      background-blend-mode: normal !important;
     }
 
     body.dark-theme nav.trigger:not(.transparent-mode) {
@@ -349,8 +358,8 @@
       left: 30px;
       width: 50px;
       height: 50px;
-      background-color: #fff;
-      color: #333;
+      background-color: #ffffff !important;
+      color: #333 !important;
       border: 1px solid #ddd;
       border-radius: 50%;
       display: flex;
@@ -363,7 +372,14 @@
       transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
-    .theme-toggle-fab:hover {
+    .theme-toggle-fab i {
+      color: #000000 !important;
+    }
+
+    .theme-toggle-fab:hover,
+    .theme-toggle-fab:focus {
+      background-color: #f9f9f9 !important;
+      color: #000 !important;
       transform: scale(1.1) rotate(15deg);
     }
 
@@ -373,6 +389,10 @@
       /* Kuning emas untuk logo bulan/matahari */
       border-color: #333;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    body.dark-theme .theme-toggle-fab i {
+      color: #f1c40f !important;
     }
   </style>
   <title>Miftakun Niam | Frontend UX Engineer</title>
@@ -1585,6 +1605,9 @@
     if (localStorage.getItem('theme') === 'dark') {
       document.body.classList.add('dark-theme');
       themeIcon.classList.replace('fa-moon-o', 'fa-sun-o');
+    } else {
+      document.body.classList.remove('dark-theme');
+      themeIcon.classList.replace('fa-sun-o', 'fa-moon-o');
     }
 
     // Aksi Klik pada tombol theme
@@ -1600,6 +1623,9 @@
         localStorage.setItem('theme', 'light');
         themeIcon.classList.replace('fa-sun-o', 'fa-moon-o');
       }
+
+      // Pastikan tombol toggle mereset fokus CSS hover
+      themeBtn.blur();
 
       // Re-render Partikel untuk menyesuaikan tema segera
       if (typeof window.pJSDom !== 'undefined' && window.pJSDom.length > 0) {

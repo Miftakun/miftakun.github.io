@@ -815,3 +815,43 @@ footer {
     min-height: 200px;
     background-color: var(--bg-secondary);
 }
+
+/* --- Footer Copyright --- */
+.portfolio-footer {
+    padding: 30px 0;
+    padding-left: 0 !important;
+    /* Meniadakan double padding dari Materialize */
+    margin-top: 40px;
+    background-color: #f9f9f9;
+    border-top: 1px solid #eee;
+    text-align: center;
+}
+
+.portfolio-footer .copyright-text {
+    margin: 0;
+    color: #555;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.portfolio-footer small {
+    font-size: 0.8rem;
+    color: #999;
+    font-style: italic;
+    display: block;
+    margin-top: 8px;
+}
+
+/* Dark Mode Footer Adjustments */
+body.dark-theme .portfolio-footer {
+    background-color: #0a0a0a;
+    border-top: 1px solid #222;
+}
+
+body.dark-theme .portfolio-footer .copyright-text {
+    color: #888;
+}
+
+body.dark-theme .portfolio-footer small {
+    color: #555;
+}

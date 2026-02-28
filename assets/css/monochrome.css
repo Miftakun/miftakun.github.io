@@ -74,21 +74,25 @@ h6 {
     margin-top: 0;
 }
 
-/* Global Color Override - Kill the Green */
+/* Global Color Override - Kill the Green & Brown */
 .teal,
-.teal-text,
 .green,
-.green-text,
+.brown,
 .light-blue,
-.blue-grey,
-.blue-grey-text {
+.blue-grey {
     background-color: var(--accent-color) !important;
     color: #fff !important;
 }
 
 .teal-text,
 .green-text,
-.blue-grey-text {
+.brown-text,
+.blue-grey-text,
+.black-text,
+.text-darken-1,
+.text-darken-2,
+.text-darken-3,
+.text-darken-4 {
     background-color: transparent !important;
     color: var(--text-primary) !important;
 }

@@ -155,14 +155,14 @@ body {
 } */
 
 a {
-  color: #004d40;
+  color: #000;
 }
 
 /* main blockqoute */
 
 /* blockquote {
-  border-left: 5px solid #795548;
-  color: #795548;
+  border-left: 5px solid #333;
+  color: #555;
   font-size: 125%;
   font-weight: 400;
   margin: 20px 0;
@@ -170,8 +170,8 @@ a {
 } */
 
 blockquote {
-  border-left: 5px solid #795548;
-  color: #795548;
+  border-left: 5px solid #333;
+  color: #555;
   font-size: 125%;
   font-weight: 400;
   margin: 20px 0;
@@ -568,7 +568,7 @@ small {
 /* main .teal-text */
 
 .teal-text {
-  color: #008073 !important;
+  color: #000000 !important;
 }
 
 /* .teal-text {
@@ -578,7 +578,7 @@ small {
 /* .teal */
 
 .teal {
-  background-color: #008073 !important;
+  background-color: #000000 !important;
 }
 
 /* .teal {

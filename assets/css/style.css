@@ -69,6 +69,10 @@
   color: #db028f;
 }
 
+.instagram {
+  color: #E1306C;
+}
+
 
 .icon-btn:hover {
   transform: scale(1.10);
@@ -81,6 +85,10 @@
 
 .dribble:hover {
   background-color: #db028f;
+}
+
+.instagram:hover {
+  background-color: #E1306C;
 }
 
 .github:hover {

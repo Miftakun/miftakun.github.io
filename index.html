@@ -37,7 +37,7 @@
   <!-- Custom Styles-->
   <link rel="stylesheet" href="/assets/css/style.css?v=9">
   <link rel="stylesheet" href="/assets/css/monochrome.css?v=5">
-  
+
   <title>Miftakun Niam | Frontend UX Engineer</title>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -1361,18 +1361,18 @@
   <script>
     // Membungkus logic particle dalam fungsi eksekusi untuk dimuat dinamis
     function initParticles(particleColor) {
-      // Optimasi SEO/Performa Mobile: Matikan animasi di HP
-      if (window.innerWidth < 768) return;
-
       if (typeof particlesJS === 'undefined') return;
+
+      // Jumlah partikel disesuaikan berdasar layar. Jika di HP (layar kecil), kurangi jumlah max partikel.
+      const isMobile = window.innerWidth < 768;
 
       particlesJS("particles-js", {
         particles: {
           number: {
-            value: 45, // Jumlah partikel
+            value: isMobile ? 25 : 45, // Partikel lebih sedikit pada layar HP
             density: {
               enable: true,
-              value_area: 800
+              value_area: isMobile ? 400 : 800
             }
           },
           color: {

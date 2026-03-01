@@ -18,13 +18,22 @@
   <!-- End Google Tag Manager -->
 
   <!-- Materialize - Compiled and minified CSS-->
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/css/materialize.min.css">
+  <link rel="preload" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/css/materialize.min.css" as="style"
+    onload="this.onload=null;this.rel='stylesheet'"><noscript>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/css/materialize.min.css">
+  </noscript>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;700;800&display=swap"
-    rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;700;800&display=swap"
+    as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;700;800&display=swap">
+  </noscript>
   <!-- Font Awesome Icon - CSS-->
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="preload" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" as="style"
+    onload="this.onload=null;this.rel='stylesheet'"><noscript>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  </noscript>
   <!-- Custom Styles-->
   <link rel="stylesheet" href="/assets/css/style.css?v=9">
   <link rel="stylesheet" href="/assets/css/monochrome.css?v=5">
@@ -471,7 +480,8 @@
       <li class="logo">
         <a id="logo-container" aria-label="Navigate to the beginning of the page" href="#intro" class="logo">
           <div class="profile-pic">
-            <img loading="lazy" alt="Miftakun Niam Profile" src="/assets/img/passport-new.png" class="circle">
+            <img alt="Miftakun Niam Profile" src="/assets/img/passport-new.png" class="circle" width="120" height="120"
+              fetchpriority="high">
           </div>
         </a>
       </li>
@@ -566,7 +576,8 @@
       <li class="logo">
         <a id="logo-container" aria-label="Navigate to the beginning of the page" href="#intro" class="logo">
           <div class="profile-pic">
-            <img loading="lazy" alt="Miftakun Niam Profile" src="/assets/img/passport-new.png" class="circle">
+            <img alt="Miftakun Niam Profile" src="/assets/img/passport-new.png" class="circle" width="120" height="120"
+              fetchpriority="high">
           </div>
         </a>
       </li>
@@ -1454,7 +1465,7 @@
   </main>
 
   <!-- typed.js -->
-  <script src="assets/vendor/typed.js/typed.min.js"></script>
+  <script defer src="assets/vendor/typed.js/typed.min.js"></script>
   <script>
     var typed = new Typed('.typing', {
       strings: ["Frontend UX Engineer", "Product Engineer", "Fast Learner"],
@@ -1466,10 +1477,10 @@
 
 
   <!-- jQuery-->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
   <!-- Materialize - Compiled and minified JavaScript-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/js/materialize.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/js/materialize.min.js"></script>
   <script>
     // Materialize - Initializers
     $(document).ready(function () {
@@ -1697,23 +1708,25 @@
   <!-- --- 3. 3D Card & Snippet Hover Effect (Vanilla-tilt.js) --- -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
   <script>
-    VanillaTilt.init(document.querySelectorAll(".card"), {
-      max: 10,           // kemiringan maksimum dalam derajat
-      speed: 400,        // kecepatan efek transisi masuk/keluar
-      glare: true,       // efek kilau kaca
-      "max-glare": 0.15, // opasitas maksimum efek kilau
-      perspective: 1000  // kedalaman perspektif 3D
-    });
+    if (window.innerWidth >= 768) {
+      VanillaTilt.init(document.querySelectorAll(".card"), {
+        max: 10,           // kemiringan maksimum dalam derajat
+        speed: 400,        // kecepatan efek transisi masuk/keluar
+        glare: true,       // efek kilau kaca
+        "max-glare": 0.15, // opasitas maksimum efek kilau
+        perspective: 1000  // kedalaman perspektif 3D
+      });
 
-    // Menerapkan tilt juga untuk hiasan code snippet agar terlihat 3D melayang
-    VanillaTilt.init(document.querySelectorAll(".code-snippet-container"), {
-      max: 12,
-      speed: 350,
-      glare: true,
-      "max-glare": 0.3, // Kilau kaca lebih terang untuk container gelap
-      perspective: 800,
-      scale: 1.05
-    });
+      // Menerapkan tilt juga untuk hiasan code snippet agar terlihat 3D melayang
+      VanillaTilt.init(document.querySelectorAll(".code-snippet-container"), {
+        max: 12,
+        speed: 350,
+        glare: true,
+        "max-glare": 0.3, // Kilau kaca lebih terang untuk container gelap
+        perspective: 800,
+        scale: 1.05
+      });
+    }
   </script>
 
   <!-- --- 6. Particles.js (Hero Background Effect) --- -->
@@ -1721,6 +1734,11 @@
   <script>
     // Membungkus logic particle dalam fungsi eksekusi untuk dimuat dinamis
     function initParticles(particleColor) {
+      // Optimasi SEO/Performa Mobile: Matikan animasi di HP
+      if (window.innerWidth < 768) return;
+
+      if (typeof particlesJS === 'undefined') return;
+
       particlesJS("particles-js", {
         particles: {
           number: {

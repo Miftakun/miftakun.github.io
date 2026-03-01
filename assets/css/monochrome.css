@@ -1631,13 +1631,16 @@ body.dark-theme .icon-btn {
   background-color: #222222 !important;
   color: #f0f0f0 !important;
 }
+
 body.dark-theme .icon-btn i {
   color: #f0f0f0 !important;
 }
+
 body.dark-theme .icon-btn.instagram:hover {
-  background-color: #E1306C !important;
-  color: #ffffff !important;
+  background-color: #ffffff !important;
+  color: #000000 !important;
 }
+
 body.dark-theme .icon-btn.instagram:hover i {
-  color: #ffffff !important;
+  color: #000000 !important;
 }

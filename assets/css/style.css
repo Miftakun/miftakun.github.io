@@ -88,7 +88,8 @@
 }
 
 .instagram:hover {
-  background-color: #E1306C;
+  background-color: #FFFFFF;
+  color: #000000 !important;
 }
 
 .github:hover {

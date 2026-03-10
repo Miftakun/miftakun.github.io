@@ -653,6 +653,17 @@ footer {
     margin-bottom: 12px;
   }
 
+  h2 {
+    font-size: 1.8rem !important; /* Diperkecil agar nama tidak turun / patah di layar HP */
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+
+  span.name-badge {
+    white-space: nowrap; /* Memaksa nama depan dan belakang tetap di satu baris */
+    display: inline-block;
+  }
+
   .social {
     justify-content: flex-start !important;
     /* Left Align Social Icons */

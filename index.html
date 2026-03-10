@@ -1292,8 +1292,11 @@
     const themeBtn = document.getElementById('theme-toggle-btn');
     const themeIcon = themeBtn.querySelector('i');
 
-    // Cek LocalStorage ketika pertama kali dimuat
-    if (localStorage.getItem('theme') === 'dark') {
+    // Cek LocalStorage atau Preferensi Sistem (Sistem HP/Laptop) ketika pertama kali dimuat
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
       document.body.classList.add('dark-theme');
       themeIcon.classList.replace('fa-moon-o', 'fa-sun-o');
     } else {

@@ -1605,14 +1605,14 @@ body.dark-theme .theme-toggle-fab {
   background-color: #000000 !important;
   color: #ffffff !important;
   border-color: #333 !important;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 215, 0, 0.4) !important; /* Golden/yellow glow for the moon */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 255, 255, 0.4) !important; /* White glow for the sun icon */
 }
 
 body.dark-theme .theme-toggle-fab:hover,
 body.dark-theme .theme-toggle-fab:focus {
   background-color: #222222 !important;
   color: #ffffff !important;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 215, 0, 0.6) !important; /* Intensified golden glow */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 255, 255, 0.6) !important; /* Intensified white glow */
 }
 
 body.dark-theme .theme-toggle-fab i {

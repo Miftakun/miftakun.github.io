@@ -1644,3 +1644,18 @@ body.dark-theme .icon-btn.instagram:hover {
 body.dark-theme .icon-btn.instagram:hover i {
   color: #000000 !important;
 }
+
+/* --- View Transitions API for Theme Toggle Animation --- */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 2147483646;
+}

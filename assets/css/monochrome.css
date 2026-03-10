@@ -1049,6 +1049,7 @@ body.dark-theme .name-title span {
 body.dark-theme #intro .intro-content h5,
 body.dark-theme #intro .intro-content h5:not(.intro-text) {
   color: #e0e0e0 !important;
+  font-weight: 400 !important; /* Diberi sedikit ketebalan tambahan agar serasi dengan mode terang */
 }
 
 /* Force visibility Teks Sidebar Desktop dan Mobile Nav (Posisi umum / scrolled) */

@@ -1584,12 +1584,13 @@ body.dark-theme ul.side-nav li a:hover {
   font-size: 20px;
   cursor: pointer;
   z-index: 1000;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), 0 0 15px rgba(230, 230, 230, 0.6); /* Basic box shadow + subtle light glow */
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .theme-toggle-fab i {
   color: #000000 !important;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.4); /* Glow effect specifically for the icon */
 }
 
 .theme-toggle-fab:hover,
@@ -1597,23 +1598,26 @@ body.dark-theme ul.side-nav li a:hover {
   background-color: #f9f9f9 !important;
   color: #000 !important;
   transform: scale(1.1) rotate(15deg);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2), 0 0 20px rgba(200, 200, 200, 0.8); /* Intensify glow on hover */
 }
 
 body.dark-theme .theme-toggle-fab {
   background-color: #000000 !important;
   color: #ffffff !important;
   border-color: #333 !important;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 215, 0, 0.4) !important; /* Golden/yellow glow for the moon */
 }
 
 body.dark-theme .theme-toggle-fab:hover,
 body.dark-theme .theme-toggle-fab:focus {
   background-color: #222222 !important;
   color: #ffffff !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 215, 0, 0.6) !important; /* Intensified golden glow */
 }
 
 body.dark-theme .theme-toggle-fab i {
   color: #ffffff !important;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6) !important; /* Bright white glow directly on the moon icon */
 }
 
 /* Fix rendering for Particles JS on mobile */

@@ -1099,6 +1099,9 @@
   </script>
 
 
+  <!-- Lenis Custom Smooth Scroll for Awwwards Vibe -->
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+
   <!-- jQuery-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
@@ -1151,17 +1154,37 @@
       }
     }
 
-    // --- 1. Smooth Scrolling Script ---
+    // --- 1. Master Smooth Scrolling (Lenis Awwwards Style) ---
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Easing khas premium
+      direction: 'vertical',
+      gestureDirection: 'vertical',
+      smooth: true,
+      mouseMultiplier: 1,
+      smoothTouch: false,
+      touchMultiplier: 2,
+      infinite: false,
+    })
+
+    function raf(time) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    }
+    requestAnimationFrame(raf)
+
     $('a[href^="#"]').on('click', function (event) {
-      if (this.hash !== "" && this.hash !== "#!") { // hindari scroll hash kosong
+      if (this.hash !== "" && this.hash !== "#!") {
         event.preventDefault();
         var hash = this.hash;
 
-        $('html, body').animate({
-          scrollTop: $(hash).offset().top
-        }, 800, function () {
+        // Gunakan Lenis untuk scrolling ke anchor
+        lenis.scrollTo(hash);
+
+        // Update URL
+        setTimeout(() => {
           window.location.hash = hash;
-        });
+        }, 800);
 
         // Automatically hide mobile sidebar after clicking a menu item
         if (window.innerWidth < 992) {
@@ -1280,8 +1303,9 @@
     });
 
     // --- 5. Back to Top Button Visibility ---
-    $(window).scroll(function () {
-      if ($(this).scrollTop() > 400) {
+    lenis.on('scroll', (e) => {
+      // e.animatedScroll represents the exact scroll position in Lenis
+      if (e.animatedScroll > 400 || window.scrollY > 400) {
         $('.back-to-top').addClass('show');
       } else {
         $('.back-to-top').removeClass('show');
@@ -1499,6 +1523,86 @@
     // Eksekusi penarikan memori halaman pertama dimuat
     const isInitialDark = document.body.classList.contains('dark-theme');
     initParticles(isInitialDark ? '#ffffff' : '#000000'); 
+    
+    // --- 8. Custom Invert Cursor Script ---
+    // Hanya eksekusi pada device non-touch (desktop/pointer halus)
+    if (window.matchMedia("(pointer: fine)").matches) {
+      const cursor = document.createElement('div');
+      cursor.classList.add('custom-cursor');
+      document.body.appendChild(cursor);
+
+      // Posisi saat ini dan target posisi (untuk efek kelenturan)
+      let mouseX = 0;
+      let mouseY = 0;
+      let cursorX = 0;
+      let cursorY = 0;
+
+      document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        
+        // Tampilkan kursor saat pertama digerakkan
+        if (cursor.style.opacity === '' || cursor.style.opacity === '0') {
+          cursor.style.opacity = '1';
+        }
+      });
+
+      // Animasi gerak mulus requestAnimationFrame
+      function animateCursor() {
+        // Efek per/berkurangnya gap antara kursor asli & fake
+        cursorX += (mouseX - cursorX) * 0.2; // 0.2 adalah kecepatan kelenturan
+        cursorY += (mouseY - cursorY) * 0.2;
+
+        cursor.style.transform = `translate(${cursorX - 15}px, ${cursorY - 15}px)`; // -15px sesuai radius tengah (.custom-cursor width:30px)
+        
+        requestAnimationFrame(animateCursor);
+      }
+      animateCursor();
+
+      // Kasih kelas "hovering" (pembesaran kursor) jika mouse di atas objek yang bisa diklik
+      const klikBales = document.querySelectorAll('a, button, .icon-btn, .card, input, textarea');
+      
+      klikBales.forEach(el => {
+        el.addEventListener('mouseenter', () => { cursor.classList.add('hovering'); });
+        el.addEventListener('mouseleave', () => { cursor.classList.remove('hovering'); });
+      });
+
+      // --- 9. Premium Magnetic Effect (Gaya Awwwards) ---
+      const magnets = document.querySelectorAll('.readme, .contactme, .icon-btn, .theme-toggle-fab, .profile-pic');
+      
+      magnets.forEach(magnet => {
+        magnet.addEventListener('mousemove', function(e) {
+          const position = magnet.getBoundingClientRect();
+          const x = e.clientX - position.left - position.width / 2;
+          const y = e.clientY - position.top - position.height / 2;
+          
+          // Mematikan transisi selama digerakkan agar selaras sempurna dengan kursor
+          magnet.style.transition = 'none';
+          // Kekuatan tarikan: dibagi 3
+          magnet.style.transform = `translate(${x / 3}px, ${y / 3}px)`;
+          
+          // Efek Parallax pada ikon/teks di dalam tombol jika ada
+          const icon = magnet.querySelector('i');
+          if (icon) {
+            icon.style.transition = 'none';
+            icon.style.transform = `translate(${x / 4}px, ${y / 4}px)`;
+          }
+        });
+
+        magnet.addEventListener('mouseleave', function() {
+          // Mengembalikan posisi dengan animasi "membal" (spring/elastic) yang halus
+          magnet.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
+          magnet.style.transform = 'translate(0px, 0px)';
+          
+          const icon = magnet.querySelector('i');
+          if (icon) {
+            icon.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
+            icon.style.transform = 'translate(0px, 0px)';
+          }
+        });
+      });
+    }
+
   </script>
 </body>
 

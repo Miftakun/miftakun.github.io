@@ -1675,17 +1675,93 @@ body.dark-theme .theme-toggle-fab i {
   text-shadow: 0 0 5px rgba(140, 66, 0, 0.5) !important; /* Soft depth shadow for the icon */
 }
 
-/* --- Section Skills Interactive Icons --- */
+/* --- Section Skills Premium Glassmorphism Grid --- */
+#skills .row.text-center {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  align-items: stretch;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#skills .col {
+  float: none !important;
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex;
+}
+
 .skill-link {
-  display: inline-block;
+  position: relative;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 20px 10px;
+  border-radius: 16px;
   text-decoration: none;
-  color: inherit; /* Pewarnaan asli hitam/putih terbawa dari tema */
-  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-  will-change: transform;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--text-primary) !important;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+  /* Simplify transition for performance: only animate what's necessary, avoid "all" */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+  will-change: transform; /* removed box-shadow from will change to reduce memory */
+  gap: 12px;
+  overflow: hidden;
+}
+
+.skill-link img.responsive-img {
+  width: 50px !important;
+  height: 50px !important;
+  object-fit: contain;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block;
 }
 
 .skill-link:hover {
-  transform: scale(1.15) !important;
+  /* Only translate, drop the scale to reduce rendering recalculations */
+  transform: translateY(-5px) !important;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+body.dark-theme .skill-link {
+  /* Use a more solid background instead of backdrop-filter to prevent severe lag */
+  background: #252525;
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-theme .skill-link:hover {
+  background: #333333;
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Optimasi Khusus HP seperti Samsung Galaxy A51 */
+@media (max-width: 600px) {
+  #skills .row.text-center {
+    grid-template-columns: repeat(3, 1fr); /* Pastikan pas 3 kolom sejajar presisi */
+    gap: 12px;
+  }
+  .skill-link {
+    padding: 15px 5px;
+    font-size: 0.75rem; /* Teks lebih kecil agar tidak menumpuk */
+    border-radius: 12px;
+    gap: 8px;
+  }
+  .skill-link img.responsive-img {
+    width: 38px !important;
+    height: 38px !important;
+  }
 }
 
 /* Fix rendering for Particles JS on mobile */

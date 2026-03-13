@@ -1429,12 +1429,22 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
   <script>
     if (window.innerWidth >= 768) {
-      VanillaTilt.init(document.querySelectorAll(".card"), {
+      // Menerapkan tilt untuk card umum (pendidikan, pengalaman, project)
+      VanillaTilt.init(document.querySelectorAll(".card:not(#skills .card)"), {
         max: 10,           // kemiringan maksimum dalam derajat
         speed: 400,        // kecepatan efek transisi masuk/keluar
         glare: true,       // efek kilau kaca
         "max-glare": 0.15, // opasitas maksimum efek kilau
         perspective: 1000  // kedalaman perspektif 3D
+      });
+
+      // Menerapkan tilt khusus untuk card di dalam bagian Skills (dikurangi kemiringannya agar tidak terlalu goyang/pusing)
+      VanillaTilt.init(document.querySelectorAll("#skills .card"), {
+        max: 3,            // Sangat minim (hanya 3 derajat) agar lebih tenang
+        speed: 600,        // Transisi masuk keluar lebih lambat & smooth
+        glare: true,
+        "max-glare": 0.05, // Kilau diturunkan secara drastis
+        perspective: 1500  // Perspektif dijauhkan agar efek miringnya sangat datar
       });
 
       // Menerapkan tilt juga untuk hiasan code snippet agar terlihat 3D melayang
@@ -1596,7 +1606,8 @@
       });
 
       // --- 9. Premium Magnetic Effect (Gaya Awwwards) ---
-      const magnets = document.querySelectorAll('.readme, .contactme, .icon-btn, .theme-toggle-fab, .profile-pic, .skill-link');
+      // Dihapus .skill-link dari efek magnet JS agar tidak membebani rendering (lag) saat banyak kartu
+      const magnets = document.querySelectorAll('.readme, .contactme, .icon-btn, .theme-toggle-fab, .profile-pic');
       
       magnets.forEach(magnet => {
         magnet.addEventListener('mousemove', function(e) {

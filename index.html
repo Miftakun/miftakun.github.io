@@ -233,9 +233,9 @@
             class="mdi-content-mail small"></i><span>Contact</span></a>
       </li>
       <li class="bold">
-        <a aria-label="Open Miftakun's Resume in a new tab"
-          href="/assets/resume/CV_Miftakun%20Niam_Terbaru_compressed.pdf" target="_blank"
-          class="waves-effect waves-dark teal-text"><i class="mdi-file-folder-open small"></i><span>Resume</span></a>
+        <a aria-label="Open Miftakun's Resume in a new tab" href="/assets/resume/Miftakun_Niam_CV_Terbaru.pdf"
+          target="_blank" class="waves-effect waves-dark teal-text"><i
+            class="mdi-file-folder-open small"></i><span>Resume</span></a>
       </li>
     </ul>
   </nav>
@@ -862,12 +862,14 @@
               </div>
               <div class="col s4 m2">
                 <a href="https://www.mysql.com/" target="_blank" class="skill-link" rel="noopener noreferrer">
-                  <img loading="lazy" alt="MySQL" src="/assets/img/mysql-logo-1-300x300.jpg" class="responsive-img">MySQL
+                  <img loading="lazy" alt="MySQL" src="/assets/img/mysql-logo-1-300x300.jpg"
+                    class="responsive-img">MySQL
                 </a>
               </div>
               <div class="col s4 m2">
                 <a href="https://www.postgresql.org/" target="_blank" class="skill-link" rel="noopener noreferrer">
-                  <img loading="lazy" alt="PostgreSQL" src="/assets/img/postgresql-logo.png" class="responsive-img">PostgreSQL
+                  <img loading="lazy" alt="PostgreSQL" src="/assets/img/postgresql-logo.png"
+                    class="responsive-img">PostgreSQL
                 </a>
               </div>
               <div class="col s4 m2">
@@ -895,7 +897,8 @@
                 </div>
                 <div class="col s4 m2">
                   <a href="https://www.tensorflow.org/" target="_blank" class="skill-link" rel="noopener noreferrer">
-                    <img loading="lazy" alt="TensorFlow" src="/assets/img/tensorflow-logo-1.png" class="responsive-img">TensorFlow
+                    <img loading="lazy" alt="TensorFlow" src="/assets/img/tensorflow-logo-1.png"
+                      class="responsive-img">TensorFlow
                   </a>
                 </div>
               </div>
@@ -924,7 +927,8 @@
                 </div>
                 <div class="col s4 m2">
                   <a href="https://cloud.google.com/" target="_blank" class="skill-link" rel="noopener noreferrer">
-                    <img loading="lazy" alt="Google Cloud" src="/assets/img/cloud.png" class="responsive-img">Google Cloud
+                    <img loading="lazy" alt="Google Cloud" src="/assets/img/cloud.png" class="responsive-img">Google
+                    Cloud
                   </a>
                 </div>
               </div>
@@ -1115,7 +1119,8 @@
     </button>
 
     <!-- Background Audio Element -->
-    <audio id="bg-music" src="/assets/sounds/paulyudin-lofi-lofi-chill-lofi-girl-482399.mp3" loop preload="auto"></audio>
+    <audio id="bg-music" src="/assets/sounds/paulyudin-lofi-lofi-chill-lofi-girl-482399.mp3" loop
+      preload="auto"></audio>
   </main>
 
   <!-- typed.js -->
@@ -1563,8 +1568,8 @@
 
     // Eksekusi penarikan memori halaman pertama dimuat
     const isInitialDark = document.body.classList.contains('dark-theme');
-    initParticles(isInitialDark ? '#ffffff' : '#000000'); 
-    
+    initParticles(isInitialDark ? '#ffffff' : '#000000');
+
     // --- 8. Custom Invert Cursor Script ---
     // Hanya eksekusi pada device non-touch (desktop/pointer halus)
     if (window.matchMedia("(pointer: fine)").matches) {
@@ -1581,7 +1586,7 @@
       document.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
-        
+
         // Tampilkan kursor saat pertama digerakkan
         if (cursor.style.opacity === '' || cursor.style.opacity === '0') {
           cursor.style.opacity = '1';
@@ -1596,15 +1601,15 @@
 
         // Ujung panah berada di (0,0), jangan beri offset tengah (-15) lagi
         // Beri sedikit minus (-1.5) untuk mengkompensasi stroke (garis luar) desain panahnya agar klik presisi
-        cursor.style.transform = `translate(${cursorX - 1.5}px, ${cursorY - 1.5}px)`; 
-        
+        cursor.style.transform = `translate(${cursorX - 1.5}px, ${cursorY - 1.5}px)`;
+
         requestAnimationFrame(animateCursor);
       }
       animateCursor();
 
       // Kasih kelas "hovering" (pembesaran kursor) jika mouse di atas objek yang bisa diklik
       const klikBales = document.querySelectorAll('a, button, .icon-btn, .card, input, textarea');
-      
+
       klikBales.forEach(el => {
         el.addEventListener('mouseenter', () => { cursor.classList.add('hovering'); });
         el.addEventListener('mouseleave', () => { cursor.classList.remove('hovering'); });
@@ -1613,18 +1618,18 @@
       // --- 9. Premium Magnetic Effect (Gaya Awwwards) ---
       // Dihapus .skill-link dari efek magnet JS agar tidak membebani rendering (lag) saat banyak kartu
       const magnets = document.querySelectorAll('.readme, .contactme, .icon-btn, .theme-toggle-fab, .profile-pic');
-      
+
       magnets.forEach(magnet => {
-        magnet.addEventListener('mousemove', function(e) {
+        magnet.addEventListener('mousemove', function (e) {
           const position = magnet.getBoundingClientRect();
           const x = e.clientX - position.left - position.width / 2;
           const y = e.clientY - position.top - position.height / 2;
-          
+
           // Mematikan transisi selama digerakkan agar selaras sempurna dengan kursor
           magnet.style.transition = 'none';
           // Kekuatan tarikan: dibagi 3
           magnet.style.transform = `translate(${x / 3}px, ${y / 3}px)`;
-          
+
           // Efek Parallax pada ikon/teks di dalam tombol jika ada
           const icon = magnet.querySelector('i');
           if (icon) {
@@ -1633,11 +1638,11 @@
           }
         });
 
-        magnet.addEventListener('mouseleave', function() {
+        magnet.addEventListener('mouseleave', function () {
           // Mengembalikan posisi dengan animasi "membal" (spring/elastic) yang halus
           magnet.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
           magnet.style.transform = 'translate(0px, 0px)';
-          
+
           const icon = magnet.querySelector('i');
           if (icon) {
             icon.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
@@ -1650,7 +1655,7 @@
     // --- 10. Background Music Toggle Logic ---
     const bgMusic = document.getElementById('bg-music');
     const musicToggleBtn = document.getElementById('music-toggle-btn');
-    
+
     // Set volume default agar tidak terlalu keras mengagetkan (30%)
     if (bgMusic) bgMusic.volume = 0.3;
 

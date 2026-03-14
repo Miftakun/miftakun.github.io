@@ -1103,6 +1103,19 @@
     <button class="theme-toggle-fab" id="theme-toggle-btn" aria-label="Toggle Dark Mode">
       <i class="fa fa-moon-o"></i>
     </button>
+
+    <!-- Floating Background Music Toggle (Awwwards Style Equalizer) -->
+    <button class="music-toggle-btn magnet-item" id="music-toggle-btn" aria-label="Toggle Background Music">
+      <div class="equalizer">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </button>
+
+    <!-- Background Audio Element -->
+    <audio id="bg-music" src="/assets/sounds/paulyudin-lofi-lofi-chill-lofi-girl-482399.mp3" loop preload="auto"></audio>
   </main>
 
   <!-- typed.js -->
@@ -1631,6 +1644,25 @@
             icon.style.transform = 'translate(0px, 0px)';
           }
         });
+      });
+    }
+
+    // --- 10. Background Music Toggle Logic ---
+    const bgMusic = document.getElementById('bg-music');
+    const musicToggleBtn = document.getElementById('music-toggle-btn');
+    
+    // Set volume default agar tidak terlalu keras mengagetkan (30%)
+    if (bgMusic) bgMusic.volume = 0.3;
+
+    if (musicToggleBtn && bgMusic) {
+      musicToggleBtn.addEventListener('click', () => {
+        if (bgMusic.paused) {
+          bgMusic.play();
+          musicToggleBtn.classList.add('playing');
+        } else {
+          bgMusic.pause();
+          musicToggleBtn.classList.remove('playing');
+        }
       });
     }
 

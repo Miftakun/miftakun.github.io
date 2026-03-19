@@ -1934,3 +1934,12 @@ body.dark-theme .bar {
     bottom: 75px !important;
   }
 }
+
+/* Ketebalan Khusus Icon Dribbble (Menyamakan dengan Social Icon lain) */
+.icon-btn.dribble i.fa-dribbble,
+a[data-tooltip="View Dribble"] i.fa-dribbble {
+  /* FontAwesome 4 Dribbble default-nya sangat tipis. Celah ini kita akali dengan webkit-text-stroke */
+  -webkit-text-stroke: 1.2px currentColor;
+  stroke: currentColor;
+  stroke-width: 1.2px;
+}

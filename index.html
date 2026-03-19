@@ -1669,6 +1669,14 @@
           musicToggleBtn.classList.remove('playing');
         }
       });
+
+      // Fitur Cerdas: Otomatis Pause/Mute musik ketika pengguna keluar dari Tab/Website
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden && !bgMusic.paused) {
+          bgMusic.pause();
+          musicToggleBtn.classList.remove('playing');
+        }
+      });
     }
 
   </script>

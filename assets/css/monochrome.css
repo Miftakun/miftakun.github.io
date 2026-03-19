@@ -1812,11 +1812,11 @@ body.dark-theme .icon-btn.instagram:hover i {
 .music-toggle-btn {
   position: fixed;
   bottom: 30px;
-  left: 30px;
+  right: 30px; /* Default di pojok kanan bawah, menumpangi back-to-top yg sembunyi */
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: #ffffff;
+  background-color: #ffffff !important;
   border: 1px solid rgba(0, 0, 0, 0.1);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   cursor: pointer;
@@ -1825,14 +1825,20 @@ body.dark-theme .icon-btn.instagram:hover i {
   align-items: center;
   justify-content: center;
   outline: none;
-  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease, background-color 0.3s ease;
-  will-change: transform;
+  -webkit-tap-highlight-color: transparent; /* Hilangkan warna teal saat di-klik di Android */
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease, background-color 0.3s ease, bottom 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform, bottom;
+}
+
+/* Jika back-to-top muncul (saat scroll turun), tombol musik otomatis naik mendatar menghindari tumpukan */
+.back-to-top.show ~ .music-toggle-btn {
+  bottom: 90px;
 }
 
 body.dark-theme .music-toggle-btn {
-  background-color: #1e1e1e;
-  border-color: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  background-color: #ffffff !important; /* Diubah menjadi putih sesuai permintaan pengguna */
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
 }
 
 .music-toggle-btn:hover {
@@ -1841,7 +1847,7 @@ body.dark-theme .music-toggle-btn {
 }
 
 body.dark-theme .music-toggle-btn:hover {
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.4);
 }
 
 /* Equalizer Base Styling */
@@ -1862,7 +1868,7 @@ body.dark-theme .music-toggle-btn:hover {
 }
 
 body.dark-theme .bar {
-  background-color: #fff;
+  background-color: #000; /* Warna hitam seperti yang direkues di mode malam */
 }
 
 /* Equalizer Animasi Saat Bermain (Playing) */
@@ -1901,12 +1907,30 @@ body.dark-theme .bar {
   }
 }
 
-/* Di HP, kurangi ukuran dan jarak ke pojok */
+/* Di HP, ratakan ukuran dan jarak secara presisi untuk semua tombol melayang (FAB) */
 @media (max-width: 600px) {
+  /* Ukuran tombol diseragamkan menjadi 45px */
+  .theme-toggle-fab,
+  .back-to-top,
   .music-toggle-btn {
-    bottom: 20px;
-    left: 20px;
-    width: 45px;
-    height: 45px;
+    width: 45px !important;
+    height: 45px !important;
+    bottom: 20px !important;
+  }
+
+  /* Theme Toggle di Kiri */
+  .theme-toggle-fab {
+    left: 20px !important;
+  }
+
+  /* Back-to-top & Music Toggle sama-sama menumpuk sejajar pas di Kanan */
+  .back-to-top,
+  .music-toggle-btn {
+    right: 20px !important;
+  }
+
+  /* Jika back-to-top aktif, musik pindah sejajar ke atas dengan jarak pas (+10px margin) = 20(B) + 45(H) + 10 = 75px */
+  .back-to-top.show ~ .music-toggle-btn {
+    bottom: 75px !important;
   }
 }

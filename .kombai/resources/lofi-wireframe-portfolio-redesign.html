@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wireframe — Miftakun Niam Portfolio Redesign</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;
+      background: #f5f5f5;
+      color: #222;
+      min-height: 100vh;
+    }
+
+    /* ---- LEGEND HEADER ---- */
+    .legend-bar {
+      background: #222;
+      color: #fff;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      position: sticky;
+      top: 0;
+      z-index: 9999;
+    }
+    .legend-bar span { font-weight: bold; font-size: 15px; }
+    .badge { padding: 3px 10px; border-radius: 4px; font-weight: bold; font-size: 12px; }
+    .badge-reuse { background: #4CAF50; color: #fff; }
+    .badge-new   { background: #FF9800; color: #fff; }
+    .badge-fix   { background: #F44336; color: #fff; }
+
+    /* ---- LAYOUT ---- */
+    .layout {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* ---- SIDEBAR ---- */
+    .sidebar {
+      width: 220px;
+      min-width: 220px;
+      background: #fff;
+      border-right: 2px dashed #bbb;
+      padding: 24px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      position: sticky;
+      top: 40px;
+      height: calc(100vh - 40px);
+      overflow-y: auto;
+    }
+    .sidebar-avatar {
+      width: 90px;
+      height: 90px;
+      background: #ccc;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: #666;
+      border: 2px solid #999;
+      text-align: center;
+    }
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 12px;
+      border-radius: 8px;
+      font-size: 14px;
+      color: #444;
+      border: 1.5px dashed transparent;
+      cursor: default;
+    }
+    .nav-item.active {
+      background: #222;
+      color: #fff;
+      border-color: #222;
+    }
+    .nav-item:hover { background: #eee; }
+    .nav-icon {
+      width: 20px;
+      height: 20px;
+      background: #ccc;
+      border-radius: 3px;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+    .nav-item.active .nav-icon { background: #fff; }
+    .sidebar-divider { border: none; border-top: 1.5px dashed #ddd; margin: 8px 0; }
+
+    /* ---- MAIN CONTENT ---- */
+    .main { flex: 1; overflow-x: hidden; }
+
+    /* ---- SHARED SECTION STYLES ---- */
+    .section {
+      padding: 60px 48px;
+      border-bottom: 2px dashed #ccc;
+      position: relative;
+    }
+    .section-label {
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      color: #aaa;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .section-title {
+      font-size: 26px;
+      font-weight: bold;
+      padding-left: 14px;
+      border-left: 5px solid #333;
+      margin-bottom: 36px;
+      color: #111;
+    }
+
+    /* ---- COMPONENT BADGE WRAPPER ---- */
+    .comp {
+      position: relative;
+      display: inline-block;
+    }
+    .comp-block {
+      position: relative;
+    }
+    .tag {
+      position: absolute;
+      top: -10px;
+      right: -4px;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      z-index: 10;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+    .tag-reuse { background: #4CAF50; color: #fff; }
+    .tag-new   { background: #FF9800; color: #fff; }
+    .tag-fix   { background: #F44336; color: #fff; }
+
+    /* ---- HERO SECTION ---- */
+    #hero {
+      background: #f0f0f0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      padding: 60px 48px;
+    }
+    .hero-left { flex: 1; }
+    .hero-right {
+      width: 280px;
+      flex-shrink: 0;
+    }
+    .hero-eyebrow {
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #999;
+      font-family: Arial, sans-serif;
+      margin-bottom: 10px;
+    }
+    .hero-name {
+      font-size: 52px;
+      font-weight: bold;
+      line-height: 1.05;
+      margin-bottom: 12px;
+      color: #111;
+    }
+    .hero-name em {
+      display: inline-block;
+      background: #111;
+      color: #fff;
+      padding: 0 8px;
+      font-style: normal;
+      border-radius: 4px;
+    }
+    .hero-role {
+      font-size: 20px;
+      color: #555;
+      margin-bottom: 20px;
+    }
+    .hero-role .typing-placeholder {
+      display: inline-block;
+      background: #ddd;
+      width: 200px;
+      height: 24px;
+      border-radius: 3px;
+      vertical-align: middle;
+    }
+    .hero-bio {
+      font-size: 15px;
+      color: #555;
+      line-height: 1.6;
+      max-width: 480px;
+      margin-bottom: 28px;
+    }
+    .hero-social {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+    .social-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #fff;
+      border: 2px dashed #999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: #666;
+      font-family: Arial, sans-serif;
+    }
+    .hero-ctas { display: flex; gap: 14px; }
+    .btn-primary {
+      padding: 12px 28px;
+      background: #222;
+      color: #fff;
+      border: 2px solid #222;
+      border-radius: 8px;
+      font-family: 'Comic Sans MS', cursive;
+      font-size: 14px;
+      cursor: default;
+    }
+    .btn-secondary {
+      padding: 12px 28px;
+      background: transparent;
+      color: #222;
+      border: 2px dashed #222;
+      border-radius: 8px;
+      font-family: 'Comic Sans MS', cursive;
+      font-size: 14px;
+      cursor: default;
+    }
+
+    /* Hero Right — Profile Card */
+    .profile-card {
+      background: #fff;
+      border: 2px dashed #bbb;
+      border-radius: 16px;
+      padding: 28px 20px;
+      text-align: center;
+    }
+    .profile-img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: #ccc;
+      margin: 0 auto 16px;
+      border: 2px solid #aaa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: #777;
+    }
+    .profile-name { font-size: 16px; font-weight: bold; margin-bottom: 4px; }
+    .profile-role { font-size: 12px; color: #777; margin-bottom: 16px; }
+    .stat-row {
+      display: flex;
+      justify-content: space-around;
+      border-top: 1.5px dashed #ddd;
+      padding-top: 14px;
+      margin-top: 4px;
+    }
+    .stat { text-align: center; }
+    .stat-val { font-size: 18px; font-weight: bold; }
+    .stat-key { font-size: 10px; color: #999; font-family: Arial, sans-serif; }
+
+    /* Code snippet */
+    .code-box {
+      background: #1a1a1a;
+      border-radius: 10px;
+      padding: 16px;
+      margin-top: 16px;
+      text-align: left;
+    }
+    .code-dots { display: flex; gap: 6px; margin-bottom: 10px; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: #444; }
+    .code-line { font-size: 11px; color: #aaa; font-family: monospace; line-height: 1.8; }
+    .code-kw { color: #fff; font-weight: bold; }
+
+    /* ---- ABOUT SECTION ---- */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    .about-text { font-size: 15px; color: #444; line-height: 1.7; }
+    .about-quick-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .stat-card {
+      background: #fff;
+      border: 2px dashed #ccc;
+      border-radius: 12px;
+      padding: 16px;
+    }
+    .stat-card-val { font-size: 24px; font-weight: bold; }
+    .stat-card-lbl { font-size: 12px; color: #888; font-family: Arial, sans-serif; }
+
+    /* ---- EXPERIENCE SECTION ---- */
+    .timeline {
+      position: relative;
+      padding-left: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 8px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: repeating-linear-gradient(to bottom, #999 0, #999 5px, transparent 5px, transparent 10px);
+    }
+    .timeline-item {
+      position: relative;
+      background: #fff;
+      border: 2px dashed #ccc;
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -28px;
+      top: 20px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #444;
+      border: 2px solid #fff;
+    }
+    .timeline-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 10px;
+    }
+    .company-logo {
+      width: 48px;
+      height: 48px;
+      background: #eee;
+      border-radius: 8px;
+      border: 1.5px dashed #bbb;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      color: #888;
+    }
+    .timeline-meta { flex: 1; }
+    .timeline-company { font-size: 16px; font-weight: bold; margin-bottom: 2px; }
+    .timeline-role { font-size: 13px; color: #666; margin-bottom: 4px; }
+    .timeline-date {
+      font-size: 11px;
+      color: #aaa;
+      font-family: Arial, sans-serif;
+      letter-spacing: 0.5px;
+    }
+    .timeline-body { font-size: 13px; color: #555; line-height: 1.6; }
+    .tag-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+    .skill-tag {
+      padding: 3px 10px;
+      background: #f0f0f0;
+      border: 1.5px dashed #aaa;
+      border-radius: 20px;
+      font-size: 11px;
+      color: #555;
+      font-family: Arial, sans-serif;
+    }
+
+    /* ---- PROJECTS SECTION ---- */
+    .filter-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+    .filter-pill {
+      padding: 7px 18px;
+      border-radius: 20px;
+      border: 2px dashed #999;
+      background: transparent;
+      font-family: 'Comic Sans MS', cursive;
+      font-size: 13px;
+      color: #555;
+      cursor: default;
+    }
+    .filter-pill.active {
+      background: #222;
+      color: #fff;
+      border-color: #222;
+    }
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .project-card {
+      background: #fff;
+      border: 2px dashed #ccc;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .project-thumb {
+      height: 150px;
+      background: #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: #888;
+      border-bottom: 1.5px dashed #ccc;
+    }
+    .project-body { padding: 14px 16px; }
+    .project-title { font-size: 14px; font-weight: bold; margin-bottom: 4px; }
+    .project-desc { font-size: 12px; color: #777; margin-bottom: 10px; }
+    .project-links { display: flex; gap: 8px; }
+    .project-link-btn {
+      width: 32px;
+      height: 32px;
+      background: #eee;
+      border: 1.5px dashed #aaa;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: #666;
+    }
+
+    /* ---- SKILLS SECTION ---- */
+    .skills-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .skill-group-title {
+      font-size: 13px;
+      font-family: Arial, sans-serif;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1.5px dashed #ddd;
+    }
+    .skill-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .skill-chip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      background: #fff;
+      border: 2px dashed #ccc;
+      border-radius: 10px;
+      font-size: 13px;
+    }
+    .chip-icon {
+      width: 24px;
+      height: 24px;
+      background: #ddd;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+
+    /* ---- EDUCATION SECTION ---- */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .edu-card {
+      background: #fff;
+      border: 2px dashed #ccc;
+      border-radius: 12px;
+      padding: 22px;
+    }
+    .edu-school { font-size: 15px; font-weight: bold; margin-bottom: 4px; }
+    .edu-degree { font-size: 13px; color: #666; margin-bottom: 8px; }
+    .edu-meta { font-size: 12px; color: #aaa; font-family: Arial, sans-serif; }
+    .edu-courses { margin-top: 12px; }
+    .edu-courses li { font-size: 12px; color: #666; line-height: 1.8; margin-left: 16px; list-style: disc; }
+
+    /* ---- CONTACT SECTION ---- */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    .contact-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #222;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 10px;
+      flex-shrink: 0;
+    }
+    .contact-text { font-size: 14px; }
+    .contact-text small { display: block; font-size: 11px; color: #aaa; font-family: Arial, sans-serif; }
+
+    /* Contact Form */
+    .contact-form {
+      background: #fff;
+      border: 2px dashed #bbb;
+      border-radius: 16px;
+      padding: 28px;
+    }
+    .form-title { font-size: 18px; font-weight: bold; margin-bottom: 20px; }
+    .form-field {
+      margin-bottom: 14px;
+    }
+    .form-label { font-size: 12px; color: #888; font-family: Arial, sans-serif; display: block; margin-bottom: 5px; }
+    .form-input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 2px dashed #ccc;
+      border-radius: 8px;
+      font-family: 'Comic Sans MS', cursive;
+      font-size: 13px;
+      background: #fafafa;
+      color: #555;
+    }
+    .form-textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 2px dashed #ccc;
+      border-radius: 8px;
+      font-family: 'Comic Sans MS', cursive;
+      font-size: 13px;
+      background: #fafafa;
+      color: #555;
+      height: 100px;
+      resize: none;
+    }
+    .form-submit {
+      width: 100%;
+      padding: 13px;
+      background: #222;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Comic Sans MS', cursive;
+      font-size: 14px;
+      cursor: default;
+      margin-top: 6px;
+    }
+
+    /* ---- FOOTER ---- */
+    .footer {
+      background: #f0f0f0;
+      padding: 24px 48px;
+      text-align: center;
+      font-size: 12px;
+      color: #999;
+      border-top: 2px dashed #ccc;
+      font-family: Arial, sans-serif;
+    }
+
+    /* ---- FLOATING FABs ---- */
+    .fabs {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+      z-index: 1000;
+    }
+    .fab-row { display: flex; gap: 10px; }
+    .fab {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #fff;
+      border: 2px dashed #aaa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: #666;
+      font-family: Arial, sans-serif;
+    }
+    .fab.dark { background: #222; color: #fff; border-color: #222; }
+
+    /* ---- ANNOTATION CALLOUTS ---- */
+    .annotation {
+      background: #fffde7;
+      border: 1.5px dashed #f0c300;
+      border-radius: 6px;
+      padding: 6px 12px;
+      font-size: 11px;
+      color: #555;
+      font-family: Arial, sans-serif;
+      margin-top: 8px;
+      display: inline-block;
+    }
+    .fix-note {
+      background: #ffebee;
+      border: 1.5px dashed #F44336;
+      border-radius: 6px;
+      padding: 6px 12px;
+      font-size: 11px;
+      color: #b71c1c;
+      font-family: Arial, sans-serif;
+      margin-top: 4px;
+      display: block;
+    }
+
+    /* ---- RESPONSIVE NOTE ---- */
+    .responsive-note {
+      background: #e3f2fd;
+      border: 1.5px dashed #1565c0;
+      border-radius: 6px;
+      padding: 8px 14px;
+      font-size: 11px;
+      color: #1565c0;
+      font-family: Arial, sans-serif;
+      margin-bottom: 16px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOP LEGEND BAR -->
+<div class="legend-bar">
+  <span>📐 Portfolio Redesign Wireframe</span>
+  <div style="display:flex;gap:12px;align-items:center;">
+    <span class="badge badge-reuse">[REUSE] Existing element</span>
+    <span class="badge badge-new">[NEW] New component/pattern</span>
+    <span class="badge badge-fix">[FIX] Bug / critical fix needed</span>
+  </div>
+  <span style="margin-left:auto;font-size:11px;opacity:0.7;">Balsamiq-style · Grayscale · Mid-fidelity</span>
+</div>
+
+<div class="layout">
+
+  <!-- ==================== SIDEBAR ==================== -->
+  <!-- REUSABLE: Fixed sidebar navigation from existing ul.side-nav.fixed -->
+  <aside class="sidebar">
+    <div style="position:relative;text-align:center;margin-bottom:8px;">
+      <span class="tag tag-reuse" style="position:static;display:inline-block;margin-bottom:6px;">[REUSE] .profile-pic</span>
+      <div class="sidebar-avatar">Photo<br>90×90</div>
+      <div style="font-size:13px;font-weight:bold;margin-bottom:2px;">Miftakun Niam</div>
+      <div style="font-size:11px;color:#999;font-family:Arial;">Frontend UX Engineer</div>
+    </div>
+    <hr class="sidebar-divider">
+
+    <!-- REUSABLE: nav items with existing wave-effect classes -->
+    <div class="nav-item active">
+      <span class="nav-icon"></span> About
+    </div>
+    <div class="nav-item">
+      <span class="nav-icon"></span> Experience
+    </div>
+    <div class="nav-item">
+      <span class="nav-icon" style="background:#aaa;"></span> Projects
+      <span class="annotation" style="margin-top:0;margin-left:4px;font-size:9px;padding:2px 5px;">merged</span>
+    </div>
+    <div class="nav-item">
+      <span class="nav-icon"></span> Skills
+    </div>
+    <div class="nav-item">
+      <span class="nav-icon"></span> Education
+    </div>
+    <div class="nav-item">
+      <span class="nav-icon"></span> Contact
+    </div>
+    <hr class="sidebar-divider">
+    <div class="nav-item" style="border:2px dashed #999;margin-top:8px;">
+      <span class="nav-icon"></span> Resume ↗
+    </div>
+    <div class="annotation" style="font-size:10px;margin-top:10px;">
+      💡 Merge "Project Designs" + "Project Apps" into one "Projects" nav item with tab filter inside section
+    </div>
+  </aside>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main class="main">
+
+    <!-- ==================== HERO ==================== -->
+    <!-- REUSABLE: #intro.section with existing particle background, overlay, Lenis smooth scroll -->
+    <section id="hero" class="comp-block">
+      <span class="tag tag-reuse" style="top:10px;right:10px;">[REUSE] #intro particles + Lenis + magnetic effect</span>
+      <span class="tag tag-fix" style="top:32px;right:10px;">[FIX] Remove .overlay div (contrast issue)</span>
+
+      <!-- LEFT COLUMN -->
+      <div class="hero-left">
+        <div class="hero-eyebrow">Available for work · Jakarta, Indonesia</div>
+        <h1 class="hero-name">Hi, I'm<br><em>Miftakun Niam.</em></h1>
+
+        <!-- REUSABLE: typed.js typing animation -->
+        <div class="hero-role comp-block" style="display:inline-block;">
+          <span class="tag tag-reuse" style="top:-12px;right:-4px;">[REUSE] typed.js .typing</span>
+          A <span class="typing-placeholder"></span>
+        </div>
+
+        <p class="hero-bio" style="margin-top:16px;">
+          Frontend UX Engineer passionate about crafting seamless digital experiences — from pixel-perfect UI/UX design to robust mobile app development.
+        </p>
+
+        <!-- REUSABLE: .social + .icon-btn circles -->
+        <div class="hero-social comp-block">
+          <span class="tag tag-reuse">[REUSE] .social .icon-btn</span>
+          <div class="social-icon">in</div>
+          <div class="social-icon">ig</div>
+          <div class="social-icon">gh</div>
+          <div class="social-icon">bh</div>
+          <div class="social-icon">dr</div>
+        </div>
+
+        <div class="hero-ctas" style="margin-top:8px;">
+          <div class="comp-block" style="display:inline-block;">
+            <span class="tag tag-reuse">[REUSE] .readme btn</span>
+            <button class="btn-primary">Read More</button>
+          </div>
+          <div class="comp-block" style="display:inline-block;">
+            <span class="tag tag-reuse">[REUSE] .contactme btn</span>
+            <button class="btn-secondary">Contact Me</button>
+          </div>
+        </div>
+
+        <div class="fix-note">🔴 [FIX] Fix viewport meta comma: <code>width=device-width, initial-scale=1</code></div>
+      </div>
+
+      <!-- RIGHT COLUMN — Profile Card + Code Snippet -->
+      <div class="hero-right">
+        <!-- NEW: Profile stats card (replaces floating code snippet overlap issue) -->
+        <div class="profile-card comp-block">
+          <span class="tag tag-new">[NEW] ProfileStatsCard</span>
+          <div class="profile-img">Photo<br>100×100</div>
+          <div class="profile-name">Miftakun Niam</div>
+          <div class="profile-role">Frontend UX Engineer</div>
+          <div class="stat-row">
+            <div class="stat">
+              <div class="stat-val">3+</div>
+              <div class="stat-key">Years Exp.</div>
+            </div>
+            <div class="stat">
+              <div class="stat-val">4+</div>
+              <div class="stat-key">Companies</div>
+            </div>
+            <div class="stat">
+              <div class="stat-val">10+</div>
+              <div class="stat-key">Projects</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- REUSABLE: .code-snippet-container -->
+        <div class="code-box comp-block" style="position:relative;">
+          <span class="tag tag-reuse">[REUSE] .code-snippet-container (vanilla-tilt)</span>
+          <div class="code-dots">
+            <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+          </div>
+          <div class="code-line"><span class="code-kw">class</span> ProductEngineer {</div>
+          <div class="code-line">&nbsp; val skills = [<span style="color:#ccc">"Kotlin", "Flutter"</span>]</div>
+          <div class="code-line">&nbsp; <span class="code-kw">fun</span> build() { … }</div>
+          <div class="code-line">}</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ABOUT ==================== -->
+    <!-- REUSABLE: #about.section scrollspy structure -->
+    <section class="section comp-block">
+      <span class="tag tag-reuse" style="top:10px;right:10px;">[REUSE] #about.section.scrollspy</span>
+      <div class="section-label">Section 01</div>
+      <h2 class="section-title">About</h2>
+
+      <div class="about-grid">
+        <div class="about-text">
+          <p>I'm a Bachelor of Science in Information Technology graduate from Walisongo State Islamic University Semarang. I enjoy problem-solving and building user-centric products that combine strong UX design with robust engineering.</p>
+          <br>
+          <p>Currently at Perum BULOG as Frontend UX Engineer, I translate complex business workflows into intuitive mobile and web applications using Flutter, Kotlin & Laravel.</p>
+          <div class="annotation">💡 Removed duplicate tech skill list — see Skills section instead</div>
+        </div>
+
+        <!-- NEW: Quick stat cards for at-a-glance info -->
+        <div class="about-quick-stats comp-block">
+          <span class="tag tag-new">[NEW] QuickStatCards</span>
+          <div class="stat-card">
+            <div class="stat-card-val">3.82</div>
+            <div class="stat-card-lbl">CGPA / 4.00</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-val">1+</div>
+            <div class="stat-card-lbl">Years UX Exp.</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-val">Play</div>
+            <div class="stat-card-lbl">Apps Published</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-val">4</div>
+            <div class="stat-card-lbl">Companies</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== EXPERIENCE ==================== -->
+    <!-- REUSABLE: #experience.section scrollspy; card structure inside reimagined as timeline -->
+    <section class="section comp-block">
+      <span class="tag tag-reuse" style="top:10px;right:10px;">[REUSE] #experience.section.scrollspy</span>
+      <span class="tag tag-new" style="top:32px;right:10px;">[NEW] Timeline layout (replaces stacked cards)</span>
+      <div class="section-label">Section 02</div>
+      <h2 class="section-title">Experience</h2>
+
+      <div class="annotation">💡 Replaced 4 full-height cards with a compact vertical timeline — reduces scroll, improves scannability</div>
+      <div class="annotation" style="margin-top:6px;">🔴 [FIX] Role title: switch from <code>position:absolute</code> to flexbox row (fixes medium screen overlap)</div>
+
+      <div class="timeline" style="margin-top:24px;">
+        <!-- Timeline item 1 -->
+        <div class="timeline-item comp-block">
+          <span class="tag tag-new">[NEW] TimelineItem component</span>
+          <div class="timeline-header">
+            <div class="company-logo">Logo<br>48×48</div>
+            <div class="timeline-meta">
+              <div class="timeline-company">Perum BULOG</div>
+              <div class="timeline-role">Frontend UX Engineer</div>
+              <div class="timeline-date">Jan 2026 – Present · Jakarta Selatan, Indonesia</div>
+            </div>
+          </div>
+          <div class="timeline-body">
+            Translated business workflows into Flutter & Laravel apps; published to Google Play; improved user engagement through UX-led development.
+          </div>
+          <div class="tag-row">
+            <span class="skill-tag">Kotlin</span>
+            <span class="skill-tag">Flutter</span>
+            <span class="skill-tag">Laravel</span>
+            <span class="skill-tag">UI/UX Design</span>
+          </div>
+        </div>
+
+        <!-- Timeline item 2 -->
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div class="company-logo">Logo<br>48×48</div>
+            <div class="timeline-meta">
+              <div class="timeline-company">Torche Education</div>
+              <div class="timeline-role">UI Designer</div>
+              <div class="timeline-date">Feb 2023 – Jun 2023 · Tangerang, Indonesia</div>
+            </div>
+          </div>
+          <div class="timeline-body">Designed user interfaces for educational products; collaborated cross-functionally using Figma and Asana.</div>
+          <div class="tag-row">
+            <span class="skill-tag">Figma</span>
+            <span class="skill-tag">Asana</span>
+          </div>
+        </div>
+
+        <!-- Timeline item 3 -->
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div class="company-logo">Logo<br>48×48</div>
+            <div class="timeline-meta">
+              <div class="timeline-company">Niagahoster</div>
+              <div class="timeline-role">UI/UX Designer</div>
+              <div class="timeline-date">Feb 2023 – Mar 2023 · Yogyakarta, Indonesia</div>
+            </div>
+          </div>
+          <div class="timeline-body">Conducted user research, competitive analysis, and UX redesign for hosting platform.</div>
+          <div class="tag-row">
+            <span class="skill-tag">Figma</span>
+            <span class="skill-tag">Maze</span>
+          </div>
+        </div>
+
+        <!-- Timeline item 4 -->
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div class="company-logo">Logo<br>48×48</div>
+            <div class="timeline-meta">
+              <div class="timeline-company">Techarea Indonesia</div>
+              <div class="timeline-role">UI/UX Designer</div>
+              <div class="timeline-date">Nov 2022 – Feb 2023 · Semarang, Indonesia</div>
+            </div>
+          </div>
+          <div class="timeline-body">Created wireframes, design systems, and responsive landing pages for clients.</div>
+          <div class="tag-row">
+            <span class="skill-tag">Figma</span>
+            <span class="skill-tag">Slack</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PROJECTS (merged) ==================== -->
+    <!-- REUSABLE: filter system, card structure, card-reveal, card-image hover zoom -->
+    <section class="section comp-block">
+      <span class="tag tag-reuse" style="top:10px;right:10px;">[REUSE] filter-btn system + card-image hover zoom</span>
+      <div class="section-label">Section 03</div>
+      <h2 class="section-title">Projects</h2>
+
+      <div class="annotation">💡 Merged "Project Designs" + "Project Apps" into one unified section with combined filter tabs</div>
+
+      <!-- REUSABLE: filter pill buttons -->
+      <div class="filter-row comp-block">
+        <span class="tag tag-reuse">[REUSE] .filter-btn pills</span>
+        <button class="filter-pill active">All</button>
+        <button class="filter-pill">Web Design</button>
+        <button class="filter-pill">Mobile Design</button>
+        <button class="filter-pill">Web App</button>
+        <button class="filter-pill">Mobile App</button>
+      </div>
+
+      <!-- REUSABLE: .card.medium card grid -->
+      <div class="project-grid comp-block">
+        <span class="tag tag-reuse">[REUSE] .card.medium + .card-reveal</span>
+
+        <div class="project-card">
+          <div class="project-thumb">[Image 400×200]<br>Mobile Launching Design</div>
+          <div class="project-body">
+            <div class="project-title">Mobile Launching Design-Web</div>
+            <div class="project-desc">Ecommerce mobile app launch landing page</div>
+            <div class="project-links">
+              <div class="project-link-btn">↗</div>
+              <div class="project-link-btn">Dr</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-thumb">[Image 400×200]<br>CoffeeApp Design</div>
+          <div class="project-body">
+            <div class="project-title">CoffeeApp Design-Mobile</div>
+            <div class="project-desc">Mobile coffee ordering design</div>
+            <div class="project-links">
+              <div class="project-link-btn">↗</div>
+              <div class="project-link-btn">Dr</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-thumb">[Image 400×200]<br>Blue Roof Design</div>
+          <div class="project-body">
+            <div class="project-title">Blue Roof Design-Web</div>
+            <div class="project-desc">Home roofing agency landing page</div>
+            <div class="project-links">
+              <div class="project-link-btn">↗</div>
+              <div class="project-link-btn">Dr</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-thumb">[Image 400×200]<br>Torche Calculator</div>
+          <div class="project-body">
+            <div class="project-title">Torche Calculator Design-Web</div>
+            <div class="project-desc">Chemical calculator responsive web design</div>
+            <div class="project-links">
+              <div class="project-link-btn">↗</div>
+              <div class="project-link-btn">Dr</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-thumb">[Image 400×200]<br>Destination Info App</div>
+          <div class="project-body">
+            <div class="project-title">Destination Info-App</div>
+            <div class="project-desc">Tourist attractions info app (Android)</div>
+            <div class="project-links">
+              <div class="project-link-btn">gh</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- NEW: Coming Soon as ghost card -->
+        <div class="project-card comp-block" style="border-style:dotted;background:#fafafa;">
+          <span class="tag tag-new">[NEW] GhostPlaceholderCard</span>
+          <div class="project-thumb" style="background:#eee;border-style:dotted;">✦ Coming Soon</div>
+          <div class="project-body">
+            <div class="project-title" style="color:#bbb;">New Project</div>
+            <div class="project-desc" style="color:#ccc;">Currently brewing something awesome…</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SKILLS ==================== -->
+    <!-- REUSABLE: skill grid + .skill-link chips; CHANGED: flat single-card, no nesting -->
+    <section class="section comp-block">
+      <span class="tag tag-reuse" style="top:10px;right:10px;">[REUSE] .skill-link grid chips</span>
+      <span class="tag tag-new" style="top:32px;right:10px;">[NEW] Flat single-card layout (no nesting)</span>
+      <div class="section-label">Section 04</div>
+      <h2 class="section-title">Skills</h2>
+
+      <div class="annotation">💡 Replaced 3 nested cards with a single flat section. Groups separated by labelled dividers instead of cards-in-cards.</div>
+
+      <div style="background:#fff;border:2px dashed #ccc;border-radius:16px;padding:28px;">
+        <div class="skills-wrapper">
+          <div class="skill-group">
+            <div class="skill-group-title">Languages & Databases</div>
+            <div class="skill-chips">
+              <div class="skill-chip"><div class="chip-icon"></div>Kotlin</div>
+              <div class="skill-chip"><div class="chip-icon"></div>Java</div>
+              <div class="skill-chip"><div class="chip-icon"></div>Dart</div>
+              <div class="skill-chip"><div class="chip-icon"></div>MySQL</div>
+              <div class="skill-chip"><div class="chip-icon"></div>PostgreSQL</div>
+              <div class="skill-chip"><div class="chip-icon"></div>Firebase</div>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-group-title">Frameworks</div>
+            <div class="skill-chips">
+              <div class="skill-chip"><div class="chip-icon"></div>Flutter</div>
+              <div class="skill-chip"><div class="chip-icon"></div>Bootstrap</div>
+              <div class="skill-chip"><div class="chip-icon"></div>TensorFlow</div>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-group-title">Tools & Design</div>
+            <div class="skill-chips">
+              <div class="skill-chip"><div class="chip-icon"></div>Figma</div>
+              <div class="skill-chip"><div class="chip-icon"></div>Git</div>
+              <div class="skill-chip"><div class="chip-icon"></div>AWS</div>
+              <div class="skill-chip"><div class="chip-icon"></div>Google Cloud</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== EDUCATION ==================== -->
+    <!-- REUSABLE: #education.section scrollspy + card structure -->
+    <section class="section comp-block">
+      <span class="tag tag-reuse" style="top:10px;right:10px;">[REUSE] #education.section + .card layout</span>
+      <div class="section-label">Section 05</div>
+      <h2 class="section-title">Education</h2>
+
+      <div class="edu-grid">
+        <div class="edu-card">
+          <div class="edu-school">Google Bangkit Academy</div>
+          <div class="edu-degree">Android Development Cohort 2023</div>
+          <div class="edu-meta">Jakarta, Indonesia · Project: Skin Mate</div>
+          <ul class="edu-courses">
+            <li>Kotlin Fundamentals</li>
+            <li>Android Jetpack Compose</li>
+            <li>Mobile UI/UX</li>
+            <li>Associate Android Developer Prep</li>
+          </ul>
+        </div>
+        <div class="edu-card">
+          <div class="edu-school">UIN Walisongo Semarang</div>
+          <div class="edu-degree">B.Sc. Information & Communication Technology</div>
+          <div class="edu-meta">Semarang, Indonesia · CGPA: 3.82/4.00</div>
+          <ul class="edu-courses">
+            <li>Data Structures & Algorithms</li>
+            <li>Database Management Systems</li>
+            <li>Machine Learning</li>
+            <li>Human Computer Interaction</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CONTACT ==================== -->
+    <!-- REUSABLE: #contact.section scrollspy + .btn-floating icons -->
+    <!-- NEW: Add contact form using Formspree or similar static-site form -->
+    <section class="section comp-block">
+      <span class="tag tag-reuse" style="top:10px;right:10px;">[REUSE] #contact.section + .btn-floating</span>
+      <span class="tag tag-new" style="top:32px;right:10px;">[NEW] Contact form (Formspree)</span>
+      <div class="section-label">Section 06</div>
+      <h2 class="section-title">Get In Touch</h2>
+
+      <div class="annotation">💡 Split into 2-col: contact info on left, contact form on right — eliminates ~60% empty whitespace</div>
+
+      <div class="contact-grid">
+        <!-- Left: Contact Info -->
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">☎</div>
+            <div class="contact-text">
+              <small>WhatsApp</small>
+              +62 89643394089
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">✉</div>
+            <div class="contact-text">
+              <small>Email</small>
+              miftakhunniam999@gmail.com
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">gh</div>
+            <div class="contact-text">
+              <small>GitHub</small>
+              github.com/miftakun
+            </div>
+          </div>
+          <div class="contact-item comp-block">
+            <span class="tag tag-fix" style="top:-10px;left:0;">[FIX] Show handle not full URL</span>
+            <div class="contact-icon">in</div>
+            <div class="contact-text">
+              <small>LinkedIn</small>
+              linkedin.com/in/miftakun-niam
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Contact Form -->
+        <div class="contact-form comp-block">
+          <span class="tag tag-new">[NEW] Contact form (Formspree / static handler)</span>
+          <div class="form-title">Send a Message</div>
+          <div class="form-field">
+            <label class="form-label">Your Name</label>
+            <input class="form-input" type="text" placeholder="John Doe" readonly>
+          </div>
+          <div class="form-field">
+            <label class="form-label">Email Address</label>
+            <input class="form-input" type="email" placeholder="john@example.com" readonly>
+          </div>
+          <div class="form-field">
+            <label class="form-label">Message</label>
+            <textarea class="form-textarea" placeholder="Hi Miftakun, I'd love to chat about…" readonly></textarea>
+          </div>
+          <button class="form-submit">Send Message →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <!-- REUSABLE: .portfolio-footer -->
+    <footer class="footer comp-block">
+      <span class="tag tag-reuse" style="top:8px;right:10px;">[REUSE] .portfolio-footer</span>
+      © 2026 Miftakun Niam. All Rights Reserved. · Not for cloning or reuse without permission.
+    </footer>
+
+  </main>
+</div>
+
+<!-- ==================== FLOATING FABS ==================== -->
+<!-- REUSABLE: theme-toggle-fab, back-to-top, music-toggle-btn -->
+<div class="fabs">
+  <div class="comp-block" style="position:relative;">
+    <span class="tag tag-fix" style="top:-10px;right:-4px;white-space:nowrap;">[FIX] Fix sibling selector for music/scroll overlap</span>
+    <div class="fab-row">
+      <div class="fab dark" title="Back to Top">▲</div>
+      <div class="fab" title="Music Toggle">♫</div>
+    </div>
+  </div>
+</div>
+<div style="position:fixed;bottom:28px;left:28px;" class="comp-block">
+  <span class="tag tag-reuse" style="top:-10px;left:0;">[REUSE] .theme-toggle-fab</span>
+  <div class="fab">☽</div>
+</div>
+
+<!-- ==================== SKIP LINK (NEW) ==================== -->
+<div style="position:fixed;top:48px;left:50%;transform:translateX(-50%);z-index:99999;">
+  <div class="comp-block">
+    <span class="tag tag-new">[NEW] Skip to main content link (accessibility)</span>
+    <a href="#" style="background:#222;color:#fff;padding:8px 16px;border-radius:6px;font-family:Arial;font-size:13px;text-decoration:none;">Skip to main content</a>
+  </div>
+</div>
+
+</body>
+</html>
